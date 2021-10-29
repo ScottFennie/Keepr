@@ -71,9 +71,19 @@ namespace Keepr.Repositories
             var rowsAffected = _db.Execute(sql, newData);
             if (rowsAffected == 0)
             {
-                throw new Exception("Failed to update review");
+                throw new Exception("Failed to update keep");
             }
             return newData;
+        }
+
+        public void Delete(int keepId)
+        {
+            string sql = "DELETE FROM keeps WHERE id = @keepId LIMIT 1;";
+            var rowsAffected = _db.Execute(sql, new {keepId});
+            if(rowsAffected == 0)
+            {
+                throw new Exception("Failed to delete keep");
+            }
         }
     }
 }

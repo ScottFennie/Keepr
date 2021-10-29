@@ -46,5 +46,17 @@ namespace Keepr.Services
             foundKeep.Img = editedKeep.Img ?? foundKeep.Img;
             return _keepsRepository.Edit(foundKeep);
         }
+
+        public void Delete(string userId, int keepId)
+        {
+            Keep foundKeep = GetById(keepId);
+            if(foundKeep.CreatorId != userId)
+            {
+                throw new Exception("Unauthorized");
+            }
+            _keepsRepository.Delete(keepId);
+        }
+
+
     }
 }
