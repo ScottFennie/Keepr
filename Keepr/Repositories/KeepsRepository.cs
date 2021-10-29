@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -55,6 +56,24 @@ namespace Keepr.Repositories
                 k.Creator = a;
                 return k;
             }, new {keepId}).FirstOrDefault();
+        }
+
+        public Keep Edit(Keep newData)
+        {
+            string sql = @"
+            UPDATE keeps
+            SET
+            name = @Name,
+            description = @Description,
+            img = @Img
+            WHERE id = @Id LIMIT 1;
+            ";
+            var rowsAffected = _db.Execute(sql, newData);
+            if (rowsAffected == 0)
+            {
+                throw new Exception("Failed to update review");
+            }
+            return newData;
         }
     }
 }

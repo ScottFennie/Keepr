@@ -33,5 +33,18 @@ namespace Keepr.Services
             }
             return foundKeep;
         }
+
+        public Keep Edit(Keep editedKeep)
+        {
+            Keep foundKeep = GetById(editedKeep.Id);
+            if(foundKeep.CreatorId != editedKeep.CreatorId)
+            {
+                throw new Exception("Unauthorized");
+            }
+            foundKeep.Name = editedKeep.Name ?? foundKeep.Name;
+            foundKeep.Description = editedKeep.Description ?? foundKeep.Description;
+            foundKeep.Img = editedKeep.Img ?? foundKeep.Img;
+            return _keepsRepository.Edit(foundKeep);
+        }
     }
 }
