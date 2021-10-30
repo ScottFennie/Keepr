@@ -13,10 +13,12 @@ namespace Keepr.Controllers
   public class VaultsController : ControllerBase
   {
       private readonly VaultsService _vaultsService;
+      private readonly VaultKeepsService _vaultKeepsService;
 
-        public VaultsController(VaultsService vaultsService)
+        public VaultsController(VaultsService vaultsService, VaultKeepsService vaultKeepsService)
         {
             _vaultsService = vaultsService;
+            _vaultKeepsService = vaultKeepsService;
         }
 
 
@@ -60,8 +62,8 @@ namespace Keepr.Controllers
     {
       try
       {
-        List<VaultKeep> events = _gs.GetGroupEvents(groupId);
-        return Ok(events);
+        List<VaultKeep> vaultKeeps = _vaultKeepsService.GetVaultKeeps(vaultId);
+        return Ok(vaultKeeps);
       }
       catch (System.Exception e)
       {
