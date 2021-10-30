@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Keepr.Models;
 using Keepr.Repositories;
 
@@ -15,6 +16,12 @@ namespace Keepr.Services
         public VaultKeep CreateVaultKeep(VaultKeep data)
         {
             return _vaultKeepsRepository.CreateVaultKeep(data);
+        }
+
+        
+        public List<VaultKeep> GetVaultKeeps(int vaultId)
+        {
+            return _vaultKeepsRepository.GetVaultKeeps(vaultId);
         }
 
     }

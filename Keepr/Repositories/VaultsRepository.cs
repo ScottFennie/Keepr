@@ -71,5 +71,6 @@ namespace Keepr.Repositories
                 throw new Exception("Failed to delete vault");
             }
         }
+
     }
 }
