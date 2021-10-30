@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using CodeWorks.Auth0Provider;
 using Keepr.Models;
@@ -53,6 +54,21 @@ namespace Keepr.Controllers
             return BadRequest(e.Message);
         }
     }
+
+    [HttpGet("{vaultId}/keeps")]
+    public ActionResult<List<VaultKeep>> GetVaultKeeps(int vaultId)
+    {
+      try
+      {
+        List<VaultKeep> events = _gs.GetGroupEvents(groupId);
+        return Ok(events);
+      }
+      catch (System.Exception e)
+      {
+        return BadRequest(e.Message);
+      }
+    }
+
     [Authorize]
     [HttpPut("{vaultId}")]
 
