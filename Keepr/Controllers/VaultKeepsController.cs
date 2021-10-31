@@ -36,6 +36,27 @@ namespace Keepr.Controllers
       }
     }
 
+    [Authorize]
+    [HttpDelete("{vaultKeepId}")]
+
+    public async Task<ActionResult<VaultKeep>> DeleteVaultKeep(int vaultKeepId)
+    {
+        try
+        {
+             var userInfo = await HttpContext.GetUserInfoAsync<Account>();
+             _vaultKeepsService.DeleteVaultKeep(userInfo.Id, vaultKeepId);
+             return Ok("vault keep was deleted");
+
+        }
+        catch (System.Exception e)
+        {
+            
+            return BadRequest(e.Message);
+        }
+    }
+
+    
+
 
 
     }
