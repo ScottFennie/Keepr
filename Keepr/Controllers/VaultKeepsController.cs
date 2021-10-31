@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Keepr.Controllers
 {
-    [ApiController]
+  [ApiController]
   [Route("api/[controller]")]
   public class VaultKeepsController : ControllerBase
   {
