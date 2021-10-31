@@ -44,6 +44,20 @@ namespace Keepr.Controllers
       }
     }
   
+    [HttpGet("{profileId}/vaults")]
+    public ActionResult<List<Vault>> GetVaultsByProfileId(string profileId)
+    {
+      try
+      {
+        List<Vault> vaults = _profilesService.GetVaultsByProfileId(profileId);
+        return Ok(vaults);
+      }
+      catch (System.Exception e)
+      {
+        return BadRequest(e.Message);
+      }
+    }
+  
 
     
 

@@ -30,6 +30,11 @@ namespace Keepr.Services
         {
             return _profilesRepository.GetKeepsByProfileId(profileId);
         }
+        
+        public List<Vault> GetVaultsByProfileId(string profileId)
+        {
+            return _profilesRepository.GetVaultsByProfileId(profileId);
+        }
 
 
  

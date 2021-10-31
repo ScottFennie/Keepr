@@ -42,6 +42,20 @@ namespace Keepr.Repositories
                return k;
            }, new {profileId}).ToList();
         }
+    public List<Vault> GetVaultsByProfileId(string profileId)
+        {
+           string sql = @"
+           SELECT
+           v.*,
+           a.*
+           FROM vaults v
+           JOIN accounts a on v.creatorId = a.id
+           WHERE v.creatorId = @profileId;";
+           return _db.Query<Vault, Profile, Vault>(sql, (v, a) =>{
+               v.Creator = a;
+               return v;
+           }, new {profileId}).ToList();
+        }
 
   
     }
