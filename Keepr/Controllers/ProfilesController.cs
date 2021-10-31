@@ -1,4 +1,5 @@
 using Keepr.Models;
+using Keepr.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Keepr.Controllers
@@ -15,11 +16,11 @@ namespace Keepr.Controllers
         }
 
     [HttpGet("{profileId}")]
-    public ActionResult<Profile> Get(string profileId)
+    public ActionResult<Profile> GetProfileById(string profileId)
     {
       try
       {
-        Profile profile = _profilesService.GetProfile(profileId);
+        Profile profile = _profilesService.GetProfileById(profileId);
         return Ok(profile);
       }
       catch (System.Exception e)
