@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Keepr.Models;
 using Keepr.Repositories;
 
@@ -23,6 +24,11 @@ namespace Keepr.Services
                 throw new Exception("Cannot find a profile by that Id");
             }
             return profile;
+        }
+
+        public List<Keep> GetKeepsByProfileId(string profileId)
+        {
+            return _profilesRepository.GetKeepsByProfileId(profileId);
         }
 
 

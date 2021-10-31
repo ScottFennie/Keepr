@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using Dapper;
@@ -26,6 +27,21 @@ namespace Keepr.Repositories
       ";
       return _db.Query<Profile>(sql, new { profileId }).FirstOrDefault();
     }
+
+    public List<Keep> GetKeepsByProfileId(string profileId)
+        {
+           string sql = @"
+           SELECT
+           k.*,
+           a.*
+           FROM keeps k
+           JOIN accounts a on k.creatorId = a.id
+           WHERE k.creatorId = @profileId;";
+           return _db.Query<Keep, Profile, Keep>(sql, (k, a) =>{
+               k.Creator = a;
+               return k;
+           }, new {profileId}).ToList();
+        }
 
   
     }
