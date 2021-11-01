@@ -20,7 +20,7 @@
                     <div>
                         <button class="btn btn-primary">Add To Vault</button>
                     </div>
-                    <div class="text-center">
+                    <div class="text-center" v-if="keep.creatorId === account.id">
                         <h3 class="selectable"><i class="mdi mdi-delete"></i></h3>
                     </div>
                     <div v-if="keep.creator">
@@ -40,7 +40,8 @@ import { AppState } from '../AppState'
 export default {
   setup() {
     return {
-        keep: computed(() => AppState.currentKeep)
+        keep: computed(() => AppState.currentKeep),
+        account: computed(() => AppState.account)
     }
   }
 }
