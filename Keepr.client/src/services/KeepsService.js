@@ -19,5 +19,14 @@ class KeepsService{
 
     }
 
+    async addViewToKeep(keepId){
+
+        const foundKeep = AppState.keeps.find(k => k.id === keepId)
+        const keepData = {}
+        keepData.views = foundKeep.views += 1
+        const res = await api.put(`api/keeps/${keepId}`, keepData)
+        logger.log("here is the new keep with views", res.data)
+    }
+
 }
 export const keepsService = new KeepsService()

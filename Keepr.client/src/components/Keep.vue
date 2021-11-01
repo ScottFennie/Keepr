@@ -25,7 +25,7 @@
 
 <script>
 import { Keep } from '../models/Keep'
-import { keepsService } from '../services/keepsService'
+import { keepsService } from '../services/KeepsService'
 import Pop from '../utils/Pop'
 export default {
    props: {
@@ -40,6 +40,7 @@ export default {
       async getCurrentKeep(keepId){
        try {
          await keepsService.getCurrentKeep(keepId)
+         await keepsService.addViewToKeep(keepId)
        } catch (error) {
         Pop.toast(error)
        }
