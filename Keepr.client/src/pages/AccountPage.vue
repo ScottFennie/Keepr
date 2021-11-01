@@ -1,8 +1,13 @@
 <template>
-  <div class="about text-center">
-    <h1>Welcome {{ account.name }}</h1>
-    <img class="rounded" :src="account.picture" alt="" />
-    <p>{{ account.email }}</p>
+  <div class="container-fluid">
+    <div class="row pt-5">
+      <div class="col-4">
+        <img :src="account.picture" alt="">
+      </div>
+      <div class="col-8">
+        <h1>account.name</h1>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -13,7 +18,8 @@ export default {
   name: 'Account',
   setup() {
     return {
-      account: computed(() => AppState.account)
+      account: computed(() => AppState.account),
+      mykeeps: computed(() => AppState.keeps.filter(k => k.creatorId === account.id))
     }
   }
 }
@@ -23,4 +29,5 @@ export default {
 img {
   max-width: 100px;
 }
+
 </style>

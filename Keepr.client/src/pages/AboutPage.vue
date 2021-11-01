@@ -1,6 +1,6 @@
 <template>
 <div class="container-fluid">
-  <div class="row"  data-masonry='{"percentPosition": true }'>
+  <div class="row">
     <Keep :keep="k" v-for="k in keeps" :key="k.id" />
   </div>
 </div>
@@ -47,6 +47,8 @@ export default {
     }
   }
 }
+
+
 
 
 

@@ -1,6 +1,7 @@
 <template>
   <div class="col-md-3 my-2" @click="this.getCurrentKeep(keep.id)" data-bs-toggle="modal"
           :data-bs-target="'#keep-' + keep.id" >
+          <div class="card-columns">
     <div class="card card-keep shadow-sm">
     <img :src="keep.img" class="card-img tint" alt="...">
     <div class="card-img-overlay">
@@ -10,6 +11,7 @@
          <img class="rounded-circle prof-pic" :src="keep.creator.picture" alt="profile image">
     </div>
   </div>
+    </div>
     </div>
     </div>
   </div>
