@@ -55,7 +55,7 @@ export default {
 }
 
 .prof-pic{
-  height: 3vh;
+  height: 4vh;
 }
 
 .bg-img{
