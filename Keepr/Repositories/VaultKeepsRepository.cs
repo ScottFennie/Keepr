@@ -71,7 +71,7 @@ namespace Keepr.Repositories
     //   }, new { vId }).ToList();
     // }
 
-    public List<VaultKeep> GetVaultKeeps(int vaultKeepId)
+    public List<VaultKeepViewModel> GetVaultKeeps(int vaultKeepId)
     {
       var sql = @"
       SELECT vk.*, k.*, a.* 
@@ -81,10 +81,9 @@ namespace Keepr.Repositories
       WHERE vk.vaultId = @vaultKeepId;
       ";
 
-      return _db.Query<VaultKeep, Keep, Profile, VaultKeep>(sql, (vk, k, a) =>
+      return _db.Query<VaultKeepViewModel, Keep, Profile, VaultKeepViewModel>(sql, (vk, k, a) =>
       {
         // k.Creator = a;
-        vk.Keep = k;
         vk.Creator = a;
         return vk;
       }, new { vaultKeepId }).ToList();

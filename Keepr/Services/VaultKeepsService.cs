@@ -20,7 +20,7 @@ namespace Keepr.Services
         }
 
         
-        public List<VaultKeep> GetVaultKeeps(int vaultId)
+        public List<VaultKeepViewModel> GetVaultKeeps(int vaultId)
         {
             return _vaultKeepsRepository.GetVaultKeeps(vaultId);
         }
