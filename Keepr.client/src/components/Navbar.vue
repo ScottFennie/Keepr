@@ -1,13 +1,17 @@
+
 <template>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-3">
+  <nav class="navbar navbar-expand-lg navbar-color-red navbar-dark shadow px-3">
     <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
       <div class="d-flex flex-column align-items-center">
         <img
           alt="logo"
-          src="../assets/img/cw-logo.png"
-          height="45"
+          src="../assets/img/icons8-astronaut-80.png"
+          height="50"
         />
       </div>
+      <h1 class=" ms-2 mt-1 text-white">
+        CosmoPost
+      </h1>
     </router-link>
     <button
       class="navbar-toggler"
@@ -23,14 +27,14 @@
     <div class="collapse navbar-collapse" id="navbarText">
       <ul class="navbar-nav me-auto">
         <li>
-          <router-link :to="{ name: 'About' }" class="btn text-success lighten-30 selectable text-uppercase">
+          <!-- <router-link :to="{ name: 'About' }" class="btn text-primary lighten-30 selectable text-uppercase">
             About
-          </router-link>
+          </router-link> -->
         </li>
       </ul>
       <span class="navbar-text">
         <button
-          class="btn selectable text-success lighten-30 text-uppercase my-2 my-lg-0"
+          class="btn selectable text-white text-uppercase my-2 my-lg-0"
           @click="login"
           v-if="!user.isAuthenticated"
         >
@@ -47,10 +51,10 @@
             <img
               :src="user.picture"
               alt="user photo"
-              height="40"
-              class="rounded"
+              height="45"
+              class="rounded-circle shadow-sm"
             />
-            <span class="mx-3 text-success lighten-30">{{ user.name }}</span>
+            <span class="mx-3 text-white">{{ user.name }}</span>
           </div>
           <div
             class="dropdown-menu p-0 list-group w-100"
@@ -58,7 +62,7 @@
           >
             <router-link :to="{ name: 'Account' }">
               <div class="list-group-item list-group-item-action hoverable">
-                Manage Account
+                My Tracked Bugs
               </div>
             </router-link>
             <div
@@ -74,6 +78,7 @@
     </div>
   </nav>
 </template>
+
 
 <script>
 import { AuthService } from '../services/AuthService'
@@ -117,5 +122,25 @@ a:hover {
   border-bottom: 2px solid var(--bs-success);
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
+}
+
+.navbar-color-red{
+background: #bc4e9c;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #f80759, #bc4e9c);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #f80759, #bc4e9c); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}
+.navbar-color-blue{
+background: #00B4DB;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #0083B0, #00B4DB);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #0083B0, #00B4DB); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.title-text{
+ font-family: 'Pacifico', cursive;
+}
+
+.prof-border{
+  border: 1px solid white;
 }
 </style>
