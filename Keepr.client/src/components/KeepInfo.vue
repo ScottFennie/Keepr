@@ -2,10 +2,10 @@
 <template>
 <div class="container-fluid" v-if="keep">
     <div class="row">
-        <div class="col-6" v-if="keep">
+        <div class="col-md-6" v-if="keep">
             <img :src="keep.img" alt="" class="img-fluid rounded">
         </div>
-        <div class="col-6">
+        <div class="col-md-6">
             <div class="row">
                 <div class="col-12 d-flex justify-content-center">
                     <h5 class="pe-2"><i class="mdi mdi-eye"></i> {{keep.views}}</h5>

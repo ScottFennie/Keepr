@@ -1,11 +1,11 @@
 <template>
-  <div class="col-3 my-2" @click="this.getCurrentKeep(keep.id)" data-bs-toggle="modal"
+  <div class="col-md-3 my-2" @click="this.getCurrentKeep(keep.id)" data-bs-toggle="modal"
           :data-bs-target="'#keep-' + keep.id" >
     <div class="card card-keep shadow-sm">
-    <img :src="keep.img" class="card-img" alt="...">
+    <img :src="keep.img" class="card-img tint" alt="...">
     <div class="card-img-overlay">
     <div class="d-flex justify-content-between align-content-center">
-    <h3 class="">{{keep.name}}</h3>
+    <h3 class="text-white">{{keep.name}}</h3>
     <div v-if="keep.creator">
          <img class="rounded-circle prof-pic" :src="keep.creator.picture" alt="profile image">
     </div>
@@ -61,6 +61,10 @@ export default {
 .bg-img{
   height: 100%;
   background-size: cover;
+}
+
+.tint{
+  background: rgba(0,255,255, 0.5)
 }
 
 </style>
