@@ -31,6 +31,7 @@ namespace Keepr.Controllers
         {
              var userInfo = await HttpContext.GetUserInfoAsync<Account>();
              data.CreatorId = userInfo.Id;
+             data.Creator = userInfo;
              Vault vault = _vaultsService.CreateVault(data);
              return Ok(vault);
 
