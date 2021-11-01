@@ -13,10 +13,10 @@
         Postr
       </h1>
     </router-link>
-    <div class="search-container">
+    <div class="search-container text-danger">
         <input type="text" name="search" placeholder="Search..." class="search-input">
         <a href="#" class="search-btn">
-                <span class="mdi mdi-magnify"></span>      
+                <span class="mdi mdi-magnify text-danger"></span>      
         </a>
     </div>
     <button
