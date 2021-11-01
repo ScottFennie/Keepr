@@ -1,6 +1,6 @@
 
 <template>
-  <nav class="navbar navbar-expand-lg navbar-color-blue navbar-dark shadow px-3">
+  <nav class="navbar navbar-expand-lg navbar-color-red navbar-dark shadow px-3">
     <router-link class="navbar-brand d-flex" :to="{ name: 'About' }">
       <div class="d-flex flex-column align-items-center">
         <img
@@ -10,7 +10,7 @@
         />
       </div>
       <h1 class=" ms-2 mt-1 text-white">
-        CosmoPost
+        Postr
       </h1>
     </router-link>
     <div class="search-container">
@@ -66,11 +66,11 @@
             class="dropdown-menu p-0 list-group w-100"
             aria-labelledby="authDropdown"
           >
-            <router-link :to="{ name: 'Account' }">
-              <div class="list-group-item list-group-item-action hoverable">
-                My Account
+           
+              <div @click="goToProfilePage(account.id)" class="list-group-item list-group-item-action hoverable">
+                My Profile
               </div>
-            </router-link>
+            
             <div
               class="list-group-item list-group-item-action hoverable text-danger"
               @click="logout"
@@ -90,15 +90,26 @@
 import { AuthService } from '../services/AuthService'
 import { AppState } from '../AppState'
 import { computed } from 'vue'
+import { keepsService } from '../services/keepsService'
+import Pop from '../utils/Pop'
+import { router } from '../router'
 export default {
   setup() {
     return {
       user: computed(() => AppState.user),
+      account: computed(() => AppState.account),
       async login() {
         AuthService.loginWithPopup()
       },
       async logout() {
         AuthService.logout({ returnTo: window.location.origin })
+      },
+      async goToProfilePage(profileId) {
+        try {
+          router.push({ name: 'Profile', params: { profileId: profileId } })
+        } catch (error) {
+          Pop.toast(error)
+        }
       }
     }
   }
