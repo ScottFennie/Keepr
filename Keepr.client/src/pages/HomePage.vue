@@ -1,10 +1,33 @@
 <template>
-<div></div>
+<div class="container-fluid">
+  <div class="row">
+    <Keep :keep="k" v-for="k in keeps" :key="k.id" />
+    <div class="col-12">
+      <h1>Test</h1>
+    </div>
+  </div>
+</div>
 </template>
 
 <script>
+import { computed, onMounted } from '@vue/runtime-core'
+import { AppState } from '../AppState'
+import { keepsService } from '../services/keepsService'
+import Pop from '../utils/Pop'
 export default {
-  name: 'Home'
+ setup(){
+   onMounted(async() => {
+      try {
+        await keepsService.getAllKeeps()
+      } catch (error) {
+        Pop.toast(error, 'error')
+      }
+    })
+   return{
+     keeps: computed(() => AppState.keeps)
+
+   }
+ }
 }
 </script>
 
