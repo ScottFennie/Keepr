@@ -1,6 +1,6 @@
 
 <template>
-  <nav class="navbar navbar-expand-lg navbar-color-red navbar-dark shadow px-3">
+  <nav class="navbar navbar-expand-lg navbar-color-blue navbar-dark shadow px-3">
     <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
       <div class="d-flex flex-column align-items-center">
         <img
@@ -62,7 +62,7 @@
           >
             <router-link :to="{ name: 'Account' }">
               <div class="list-group-item list-group-item-action hoverable">
-                My Tracked Bugs
+                My Account
               </div>
             </router-link>
             <div
