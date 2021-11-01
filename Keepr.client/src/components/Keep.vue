@@ -1,5 +1,5 @@
 <template>
-  <div class="col-3 my-2" data-bs-toggle="modal"
+  <div class="col-3 my-2" @click="this.getCurrentKeep(keep.id)" data-bs-toggle="modal"
           :data-bs-target="'#keep-' + keep.id" >
     <div class="card card-keep shadow-sm">
     <img :src="keep.img" class="card-img" alt="...">
@@ -16,7 +16,7 @@
 
    <Modal :id="'keep-' + keep.id">
     <template #modal-body>
-      <h1>{{keep.name}}</h1>
+      <KeepInfo />
     </template>
   </Modal>
 </template>
@@ -24,6 +24,7 @@
 <script>
 import { Keep } from '../models/Keep'
 import { keepsService } from '../services/keepsService'
+import Pop from '../utils/Pop'
 export default {
    props: {
     keep: {
@@ -31,11 +32,15 @@ export default {
       required: true
     }
   },
-  setup(prop){
+  setup(){
     return{
       // account: computed(() => AppState.account)
-      async getCurrentKeep(){
-       
+      async getCurrentKeep(keepId){
+       try {
+         await keepsService.getCurrentKeep(keepId)
+       } catch (error) {
+        Pop.toast(error)
+       }
       }
     }
   }
