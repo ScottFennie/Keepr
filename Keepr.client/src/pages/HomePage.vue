@@ -48,8 +48,8 @@ export default {
 
 /* The Masonry Container */
 .masonry {
-  margin: 1.5em;
-  column-gap: .7em;
+  margin: 1em;
+  column-gap: .5em;
   flex-wrap: wrap;
   flex-flow: column wrap;
 }

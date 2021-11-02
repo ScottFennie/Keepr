@@ -40,7 +40,10 @@ FOREIGN KEY (vaultId) REFERENCES vaults(id) ON DELETE CASCADE,
 FOREIGN KEY (keepId) REFERENCES keeps(id) ON DELETE CASCADE
 ) default charset utf8 COMMENT '';
 
-ALTER Table keeps ADD views int;
+SELECT vk.*, k.*
+      FROM vaultkeeps vk
+      JOIN keeps k ON k.id = 458
+      WHERE vk.vaultId = 377;
 
 
 
