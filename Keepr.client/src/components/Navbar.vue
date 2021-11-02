@@ -120,7 +120,7 @@ export default {
 <style scoped>
 
 .bgImage {
-    background-image: url("https://thumbs.gfycat.com/SoggyZealousKitty-size_restricted.gif");
+    background-image: url("https://f8n-production.s3.amazonaws.com/creators/profile/l5q368s3k-windows-xp-stars-screensaver-gif-oudmef.gif");
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;

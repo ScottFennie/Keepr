@@ -15,7 +15,9 @@
             data-bs-target="#newkeep">+</button>
         </div>
         <div class="col-12 masonry">
+            <div>
             <Vault :vault="v" v-for="v in vaults" :key="v.id" />
+            </div>
         </div>
         <div class="col-12 ms-5 d-flex flex-row">
             <h2>Keeps</h2>
@@ -76,7 +78,7 @@ export default {
 /* The Masonry Container */
 .masonry {
   margin: 1.5em auto;
-  // column-gap: 1.5em;
+  column-gap: 1.5em;
   flex-wrap: wrap;
   flex-flow: column wrap;
 }
@@ -86,7 +88,7 @@ export default {
 // /* Masonry on large screens */
 @media only screen and (min-width: 1024px) {
   .masonry {
-    column-count: 3;
+    column-count: 4;
   }
 }
 
