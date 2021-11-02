@@ -11,7 +11,8 @@
         </div>
         <div class="col-12 mt-5 ms-5 d-flex flex-row">
             <h2>Vaults</h2>
-            <button class="ms-2">+</button>
+            <button class="ms-2" data-bs-toggle="modal"
+            data-bs-target="#newkeep">+</button>
         </div>
         <div class="col-12 masonry">
             <Vault :vault="v" v-for="v in vaults" :key="v.id" />
@@ -25,6 +26,12 @@
         </div>
     </div>
 </div>
+
+   <Modal :id="'newkeep'">
+    <template #modal-body>
+      <CreateKeep />
+    </template>
+  </Modal>
   
 </template>
 
@@ -33,7 +40,9 @@ import { computed, onMounted } from '@vue/runtime-core'
 import { useRoute } from 'vue-router'
 import { profileService } from '../services/ProfileService'
 import { AppState } from '../AppState'
+import CreateKeep from '../components/CreateKeep.vue'
 export default {
+  components: { CreateKeep },
     setup(){
     const route = useRoute()
 

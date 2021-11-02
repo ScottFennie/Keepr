@@ -71,8 +71,6 @@ export default {
   margin: 1.5em auto;
   max-width: 768px;
   // column-gap: 1.5em;
-  flex-wrap: wrap;
-  flex-flow: column wrap;
 }
 
 /* The Masonry Brick */
