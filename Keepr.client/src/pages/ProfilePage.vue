@@ -1,10 +1,10 @@
 <template>
 <div class="container-fluid">
     <div class="row pt-4">
-        <div class="col-3" v-if="profile">
+        <div class="col-md-3" v-if="profile">
             <img :src="profile.picture" alt="" class="big-prof rounded ms-5">
         </div>
-        <div class="col-9" v-if="profile">
+        <div class="col-md-9" v-if="profile">
             <h1>{{profile.name}}</h1>
             <h3>Vaults: {{vaults.length}}</h3>
             <h3>Keeps: {{keeps.length}}</h3>
@@ -20,8 +20,8 @@
             <h2>Keeps</h2>
             <button class="ms-2">+</button>
         </div>
-        <div class="col-12">
-            <!-- keep cards go here -->
+        <div class="col-12 masonry">
+            <Keep :keep="k" v-for="k in keeps" :key="k.id" />
         </div>
     </div>
 </div>
@@ -63,4 +63,9 @@ export default {
 .big-prof{
     height:20vh;
 }
+
+/* The Masonry Container */
+
+
+
 </style>

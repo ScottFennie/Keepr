@@ -7,8 +7,8 @@
     <div class="card-img-overlay tint">
     <div class="d-flex justify-content-between align-content-center">
     <h3 class="text-white">{{keep.name}}</h3>
-    <div v-if="keep.creator">
-         <img class="rounded-circle prof-pic" :src="keep.creator.picture" alt="profile image">
+    <div v-if="keep.creator" @click="goToProfilePage(keep.creatorId)">
+         <img class="rounded-circle prof-pic " :src="keep.creator.picture" alt="profile image">
     </div>
   </div>
     </div>
@@ -25,6 +25,7 @@
 
 <script>
 import { Keep } from '../models/Keep'
+import { router } from '../router'
 import { keepsService } from '../services/KeepsService'
 import Pop from '../utils/Pop'
 export default {
@@ -44,6 +45,13 @@ export default {
        } catch (error) {
         Pop.toast(error)
        }
+      },
+       async goToProfilePage(profileId) {
+        try {
+          router.push({ name: 'Profile', params: { profileId: profileId } })
+        } catch (error) {
+          Pop.toast(error)
+        }
       }
     }
   }
