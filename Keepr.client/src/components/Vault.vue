@@ -1,9 +1,9 @@
 <template>
   <div class="item" @click="this.getCurrentVault(vault.id)">
           <div class="rounded">
-    <div class="card card-keep shadow">
-    <img src="https://stacresearch.com/sites/default/files/d5root/images/vault_image.jpg" class="card-img tint" alt="...">
-    <div class="card-img-overlay tint">
+    <div class="card card-keep c-radius shadow">
+    <img src="https://stacresearch.com/sites/default/files/d5root/images/vault_image.jpg" class="card-img c-radius tint" alt="...">
+    <div class="card-img-overlay c-radius tint">
     <div class="d-flex justify-content-between align-content-center">
     <h3 class="text-white">{{vault.name}}</h3>
     <!-- <div v-if="keep.creator" @click="goToProfilePage(keep.creatorId)">
@@ -73,8 +73,12 @@ export default {
 .item {
   background: #fff;
   // padding: 1em;
-  margin: 0 0 1em;
+  margin: 0 0 1.5em;
   display: inline-block;
+}
+
+.c-radius{
+  border-radius: 30px;
 }
 
 </style>
