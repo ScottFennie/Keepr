@@ -1,22 +1,23 @@
 
 <template>
-  <nav class="navbar navbar-expand-lg navbar-color-red navbar-dark shadow px-3">
+  <nav class="navbar navbar-expand-lg bgImage navbar-dark shadow px-3">
     <router-link class="navbar-brand d-flex" :to="{ name: 'About' }">
       <div class="d-flex flex-column align-items-center">
         <img
           alt="logo"
-          src="../assets/img/icons8-astronaut-80.png"
+          src="../assets/img/icons8-astronaut-helmet-100.png"
           height="50"
+          class="pe-2"
         />
       </div>
-      <h1 class=" ms-2 mt-1 text-white">
-        Postr
+      <h1 class=" ms-2 text-white">
+        AstroPost
       </h1>
     </router-link>
     <div class="search-container text-danger">
         <input type="text" name="search" placeholder="Search..." class="search-input">
         <a href="#" class="search-btn">
-                <span class="mdi mdi-magnify text-danger"></span>      
+                <span class="mdi mdi-magnify text-dark"></span>      
         </a>
     </div>
     <button
@@ -117,6 +118,15 @@ export default {
 </script>
 
 <style scoped>
+
+.bgImage {
+    background-image: url("https://f8n-production.s3.amazonaws.com/creators/profile/l5q368s3k-windows-xp-stars-screensaver-gif-oudmef.gif");
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-color: rgba(0, 0, 0, 0.5);
+    background-blend-mode: multiply;
+}
 .dropdown-menu {
   user-select: none;
   display: block;
@@ -142,10 +152,7 @@ a:hover {
 }
 
 .navbar-color-red{
-background: #bc4e9c;  /* fallback for old browsers */
-background: -webkit-linear-gradient(to right, #f80759, #bc4e9c);  /* Chrome 10-25, Safari 5.1-6 */
-background: linear-gradient(to right, #f80759, #bc4e9c); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
+background-color: #f807579a;
 }
 .navbar-color-blue{
 background: #00B4DB;  /* fallback for old browsers */
@@ -200,7 +207,7 @@ background: linear-gradient(to right, #0083B0, #00B4DB); /* W3C, IE 10+/ Edge, F
 }
 
 .search-container .search-btn .fas{
-    color: #5cbdbb;
+    color: black;
 }
 
 /* @keyframes hoverShake {

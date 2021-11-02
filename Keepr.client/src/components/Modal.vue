@@ -4,9 +4,6 @@
     <div class="modal-dialog modal-dialog-centered modal-lg">
       <div class="modal-content">
         <div class="modal-body">
-        <div class="d-flex justify-content-end">
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
           <slot name="modal-body"></slot>
         </div>
       </div>
@@ -23,5 +20,14 @@ export default {
 </script>
 
 <style lang="scss">
+
+.modal-body {
+    margin: 0 ;
+    padding: 0;
+}
+.modal-content{
+    padding: 0;
+    margin: 0;
+}
 
 </style>

@@ -1,10 +1,10 @@
 <template>
-  <div class="col-md-3 my-2" @click="this.getCurrentKeep(keep.id)" data-bs-toggle="modal"
+  <div class="item" @click="this.getCurrentKeep(keep.id)" data-bs-toggle="modal"
           :data-bs-target="'#keep-' + keep.id" >
-          <div class="card-columns">
-    <div class="card card-keep shadow-sm">
+          <div class="rounded">
+    <div class="card card-keep shadow">
     <img :src="keep.img" class="card-img tint" alt="...">
-    <div class="card-img-overlay">
+    <div class="card-img-overlay tint">
     <div class="d-flex justify-content-between align-content-center">
     <h3 class="text-white">{{keep.name}}</h3>
     <div v-if="keep.creator">
@@ -55,6 +55,7 @@ export default {
 
 .card-keep{
   // max-width: 5vh;
+    // background-color: black;
 }
 
 .prof-pic{
@@ -67,7 +68,46 @@ export default {
 }
 
 .tint{
-  background: rgba(0,255,255, 0.5)
+
+  background: linear-gradient(360deg, hsla(0, 0%, 0%, 0), hsla(0, 0%, 0%, 0),hsla(0, 0%, 0%, .35), hsla(0, 0%, 0%, .5));
+}
+
+/* The Masonry Container */
+.masonry {
+  margin: 1.5em auto;
+  max-width: 768px;
+  // column-gap: 1.5em;
+  flex-wrap: wrap;
+  flex-flow: column wrap;
+}
+
+/* The Masonry Brick */
+.item {
+  background: #fff;
+  // padding: 1em;
+  margin: 0 0 1em;
+  display: inline-block;
+}
+
+// /* Masonry on large screens */
+@media only screen and (min-width: 1024px) {
+  .masonry {
+    column-count: 3;
+  }
+}
+
+/* Masonry on medium-sized screens */
+@media only screen and (max-width: 1023px) and (min-width: 768px) {
+  .masonry {
+    column-count: 3;
+  }
+}
+
+/* Masonry on small screens */
+@media only screen and (max-width: 767px) and (min-width: 540px) {
+  .masonry {
+    column-count: 2;
+  }
 }
 
 </style>

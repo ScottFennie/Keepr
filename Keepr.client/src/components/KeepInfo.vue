@@ -1,12 +1,17 @@
 
 <template>
-<div class="container-fluid" v-if="keep">
-    <div class="row">
-        <div class="col-md-6" v-if="keep">
-            <img :src="keep.img" alt="" class="img-fluid rounded">
+<div class="container-fluid p-0 m-0" v-if="keep">
+    <div class="row p-0 m-0">
+        <div class="col-md-6 p-0 m-0" v-if="keep">
+            <img :src="keep.img" alt="" class="img-fluid rounded-start">
         </div>
         <div class="col-md-6">
             <div class="row">
+                <div class="col-12 pt-2">
+                         <div class="d-flex justify-content-end">
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+                </div>
                 <div class="col-12 d-flex justify-content-center">
                     <h5 class="pe-2"><i class="mdi mdi-eye"></i> {{keep.views}}</h5>
                     <h5 class="pe-2"><i class="mdi mdi-content-save"></i> {{keep.keeps}}</h5>
