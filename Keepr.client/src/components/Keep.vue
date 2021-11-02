@@ -6,7 +6,7 @@
     <img :src="keep.img" class="card-img c-radius tint" alt="...">
     <div class="card-img-overlay c-radius tint">
     <div class="d-flex justify-content-between align-content-center">
-    <h3 class="text-white">{{keep.name}}</h3>
+    <h3 class="ms-1 text-white">{{keep.name}}</h3>
     <div v-if="keep.creator" @click="goToProfilePage(keep.creatorId)">
          <img class="rounded-circle prof-pic " :src="keep.creator.picture" alt="profile image">
     </div>
@@ -113,6 +113,10 @@ export default {
 
 .c-radius{
   border-radius: 30px;
+}
+
+.c-shadow{
+box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
 }
 
 
