@@ -81,13 +81,7 @@ export default {
 }
 
 /* The Masonry Container */
-.masonry {
-  margin: 1.5em auto;
-  max-width: 768px;
-  // column-gap: 1.5em;
-  flex-wrap: wrap;
-  flex-flow: column wrap;
-}
+
 
 /* The Masonry Brick */
 .item {
@@ -97,7 +91,6 @@ export default {
   display: inline-block;
 }
 
-// /* Masonry on large screens */
 @media only screen and (min-width: 1024px) {
   .masonry {
     column-count: 3;
@@ -117,6 +110,8 @@ export default {
     column-count: 2;
   }
 }
+
+
 
 .c-color{
   background-color: black;

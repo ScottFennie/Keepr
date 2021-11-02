@@ -1,5 +1,5 @@
 <template>
-  <div class="masonry container-fluid">
+  <div class="masonry">
     <Keep :keep="k" v-for="k in keeps" :key="k.id" />
   </div>
 </template>
@@ -48,24 +48,19 @@ export default {
 
 /* The Masonry Container */
 .masonry {
-  margin: 1.5em auto;
-  max-width: 768px;
-  column-gap: 1.5em;
+  margin: 1.5em;
+  column-gap: 1em;
   flex-wrap: wrap;
   flex-flow: column wrap;
 }
 
-/* The Masonry Brick */
-.item {
-  background: #fff;
-  padding: 1em;
-  margin: 0 0 1.5em;
-}
+
+
 
 /* Masonry on large screens */
 @media only screen and (min-width: 1024px) {
   .masonry {
-    column-count: 3;
+    column-count: 4;
   }
 }
 

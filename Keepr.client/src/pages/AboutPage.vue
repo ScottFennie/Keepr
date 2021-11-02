@@ -51,19 +51,14 @@ export default {
 
 /* The Masonry Container */
 .masonry {
-  margin: 1.5em auto;
+  margin: 0em auto;
   max-width: 768px;
   column-gap: 1.5em;
   flex-wrap: wrap;
   flex-flow: column wrap;
 }
 
-/* The Masonry Brick */
-.item {
-  background: #fff;
-  padding: 1em;
-  margin: 0 0 1.5em;
-}
+
 
 /* Masonry on large screens */
 @media only screen and (min-width: 1024px) {

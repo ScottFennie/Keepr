@@ -67,11 +67,7 @@ export default {
 }
 
 /* The Masonry Container */
-.masonry {
-  margin: 1.5em auto;
-  max-width: 768px;
-  // column-gap: 1.5em;
-}
+
 
 /* The Masonry Brick */
 .item {
@@ -79,27 +75,6 @@ export default {
   // padding: 1em;
   margin: 0 0 1em;
   display: inline-block;
-}
-
-// /* Masonry on large screens */
-@media only screen and (min-width: 1024px) {
-  .masonry {
-    column-count: 3;
-  }
-}
-
-/* Masonry on medium-sized screens */
-@media only screen and (max-width: 1023px) and (min-width: 768px) {
-  .masonry {
-    column-count: 3;
-  }
-}
-
-/* Masonry on small screens */
-@media only screen and (max-width: 767px) and (min-width: 540px) {
-  .masonry {
-    column-count: 2;
-  }
 }
 
 </style>
