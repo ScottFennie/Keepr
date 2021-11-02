@@ -13,8 +13,8 @@
             <h2>Vaults</h2>
             <button class="ms-2">+</button>
         </div>
-        <div class="col-12 ms-5">
-            <!-- vault cards go here -->
+        <div class="col-12 masonry">
+            <Vault :vault="v" v-for="v in vaults" :key="v.id" />
         </div>
         <div class="col-12 ms-5 d-flex flex-row">
             <h2>Keeps</h2>
@@ -65,6 +65,36 @@ export default {
 }
 
 /* The Masonry Container */
+.masonry {
+  margin: 1.5em auto;
+  max-width: 768px;
+  // column-gap: 1.5em;
+  flex-wrap: wrap;
+  flex-flow: column wrap;
+}
+
+
+
+// /* Masonry on large screens */
+@media only screen and (min-width: 1024px) {
+  .masonry {
+    column-count: 3;
+  }
+}
+
+/* Masonry on medium-sized screens */
+@media only screen and (max-width: 1023px) and (min-width: 768px) {
+  .masonry {
+    column-count: 3;
+  }
+}
+
+/* Masonry on small screens */
+@media only screen and (max-width: 767px) and (min-width: 540px) {
+  .masonry {
+    column-count: 2;
+  }
+}
 
 
 
