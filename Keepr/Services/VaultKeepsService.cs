@@ -9,9 +9,12 @@ namespace Keepr.Services
     {
         private readonly VaultKeepsRepository _vaultKeepsRepository;
 
-        public VaultKeepsService(VaultKeepsRepository vaultKeepsRepository)
+        private readonly VaultsRepository _vaultsRepository;
+
+        public VaultKeepsService(VaultKeepsRepository vaultKeepsRepository, VaultsRepository vaultsRepository)
         {
             _vaultKeepsRepository = vaultKeepsRepository;
+            _vaultsRepository = vaultsRepository;
         }
 
         public VaultKeep CreateVaultKeep(VaultKeep data)
@@ -20,8 +23,13 @@ namespace Keepr.Services
         }
 
         
-        public List<VaultKeepViewModel> GetVaultKeeps(int vaultId)
+        public List<VaultKeepViewModel> GetVaultKeeps(int vaultId, string userId)
         {
+            Vault foundVault = _vaultsRepository.GetById(vaultId);
+            if (foundVault.IsPrivate == true && foundVault.CreatorId != userId)
+            {
+                throw new Exception("That vault is private, sorry!");
+            }
             return _vaultKeepsRepository.GetVaultKeeps(vaultId);
         }
 

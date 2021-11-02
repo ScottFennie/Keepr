@@ -19,19 +19,23 @@ namespace Keepr.Services
             return _vaultsRepository.CreateVault(data);
         }
 
-        public Vault GetById(int id)
+        public Vault GetById(int id, string userId)
         {
             Vault foundVault = _vaultsRepository.GetById(id);
             if(foundVault == null)
             {
                 throw new Exception("Cannot find a vault by that Id");
             }
+            if (foundVault.IsPrivate == true && foundVault.CreatorId != userId)
+            {
+                throw new Exception("That vault is private, sorry!");
+            }
             return foundVault;
         }
 
         public Vault Edit(Vault editedVault)
         {
-            Vault foundVault = GetById(editedVault.Id);
+            Vault foundVault = GetById(editedVault.Id, editedVault.CreatorId);
             if(foundVault.CreatorId != editedVault.CreatorId)
             {
                 throw new Exception("Unauthorized");
@@ -44,7 +48,7 @@ namespace Keepr.Services
 
         public void Delete(string userId, int vaultId)
         {
-            Vault foundVault = GetById(vaultId);
+            Vault foundVault = GetById(vaultId, userId);
             if(foundVault.CreatorId != userId)
             {
                 throw new Exception("Unauthorized");

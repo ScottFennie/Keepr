@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Keepr.Controllers
 {
-    [ApiController]
+  [ApiController]
   [Route("api/[controller]")]
   public class VaultsController : ControllerBase
   {
@@ -45,11 +45,19 @@ namespace Keepr.Controllers
 
     [HttpGet("{vaultId}")]
 
-    public ActionResult<Vault> GetById(int vaultId)
+    public async Task<ActionResult<Vault>> GetById(int vaultId)
     {
         try
         {
-             return Ok(_vaultsService.GetById(vaultId));
+            string myId = "";
+             var userInfo = await HttpContext.GetUserInfoAsync<Account>(); 
+             if(userInfo == null)
+             {
+                 myId = "0";
+                 return Ok(_vaultsService.GetById(vaultId, myId));
+             }
+             myId = userInfo.Id;
+             return Ok(_vaultsService.GetById(vaultId, myId));
         }
         catch (System.Exception e)
         {
@@ -59,11 +67,19 @@ namespace Keepr.Controllers
     }
 
     [HttpGet("{vaultId}/keeps")]
-    public ActionResult<List<VaultKeepViewModel>> GetVaultKeeps(int vaultId)
+    public async Task<ActionResult<List<VaultKeepViewModel>>> GetVaultKeepsAsync(int vaultId)
     {
       try
       {
-        List<VaultKeepViewModel> vaultKeeps = _vaultKeepsService.GetVaultKeeps(vaultId);
+        string myId = "";
+        var userInfo = await HttpContext.GetUserInfoAsync<Account>(); 
+        if(userInfo == null){
+            myId = "0";
+            List<VaultKeepViewModel> vaultKeepsNoAuth = _vaultKeepsService.GetVaultKeeps(vaultId, myId);
+            return Ok(vaultKeepsNoAuth);
+        }
+        myId = userInfo.Id;
+        List<VaultKeepViewModel> vaultKeeps = _vaultKeepsService.GetVaultKeeps(vaultId, myId);
         return Ok(vaultKeeps);
       }
       catch (System.Exception e)
