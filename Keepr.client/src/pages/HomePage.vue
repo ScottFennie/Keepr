@@ -49,7 +49,7 @@ export default {
 /* The Masonry Container */
 .masonry {
   margin: 1.5em;
-  column-gap: 1em;
+  column-gap: .7em;
   flex-wrap: wrap;
   flex-flow: column wrap;
 }
@@ -60,7 +60,7 @@ export default {
 /* Masonry on large screens */
 @media only screen and (min-width: 1024px) {
   .masonry {
-    column-count: 4;
+    column-count: 5;
   }
 }
 

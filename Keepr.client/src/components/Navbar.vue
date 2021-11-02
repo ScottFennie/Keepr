@@ -10,7 +10,7 @@
           class="pe-2"
         />
       </div>
-      <h1 class=" ms-2 text-white">
+      <h1 class=" ms-2 mt-1 text-white title-text">
         AstroPost
       </h1>
     </router-link>
@@ -161,7 +161,7 @@ background: linear-gradient(to right, #0083B0, #00B4DB); /* W3C, IE 10+/ Edge, F
 }
 
 .title-text{
- font-family: 'Pacifico', cursive;
+ font-family: 'Space Grotesk', sans-serif;
 }
 
 .prof-border{

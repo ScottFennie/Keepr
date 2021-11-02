@@ -2,9 +2,9 @@
   <div class="item" @click="this.getCurrentKeep(keep.id)" data-bs-toggle="modal"
           :data-bs-target="'#keep-' + keep.id" >
           <div class="">
-    <div class="card card-keep shadow">
-    <img :src="keep.img" class="card-img tint" alt="...">
-    <div class="card-img-overlay tint">
+    <div class="card c-radius shadow">
+    <img :src="keep.img" class="card-img c-radius tint" alt="...">
+    <div class="card-img-overlay c-radius tint">
     <div class="d-flex justify-content-between align-content-center">
     <h3 class="text-white">{{keep.name}}</h3>
     <div v-if="keep.creator" @click="goToProfilePage(keep.creatorId)">
@@ -111,6 +111,9 @@ export default {
   }
 }
 
+.c-radius{
+  border-radius: 30px;
+}
 
 
 .c-color{
