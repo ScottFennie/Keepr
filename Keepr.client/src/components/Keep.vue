@@ -1,7 +1,7 @@
 <template>
   <div class="item" @click="this.getCurrentKeep(keep.id)" data-bs-toggle="modal"
           :data-bs-target="'#keep-' + keep.id" >
-          <div class="rounded">
+          <div class="">
     <div class="card card-keep shadow">
     <img :src="keep.img" class="card-img tint" alt="...">
     <div class="card-img-overlay tint">
@@ -118,4 +118,7 @@ export default {
   }
 }
 
+.c-color{
+  background-color: black;
+}
 </style>

@@ -1,7 +1,7 @@
 
 <template>
   <nav class="navbar navbar-expand-lg bgImage navbar-dark shadow px-3">
-    <router-link class="navbar-brand d-flex" :to="{ name: 'About' }">
+    <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
       <div class="d-flex flex-column align-items-center">
         <img
           alt="logo"
@@ -120,7 +120,7 @@ export default {
 <style scoped>
 
 .bgImage {
-    background-image: url("https://f8n-production.s3.amazonaws.com/creators/profile/l5q368s3k-windows-xp-stars-screensaver-gif-oudmef.gif");
+    background-image: url("https://thumbs.gfycat.com/SoggyZealousKitty-size_restricted.gif");
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
