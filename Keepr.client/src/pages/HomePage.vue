@@ -1,5 +1,5 @@
 <template>
-  <div class="masonry">
+  <div class="masonry container-fluid">
     <Keep :keep="k" v-for="k in keeps" :key="k.id" />
   </div>
 </template>

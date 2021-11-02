@@ -1,7 +1,10 @@
 <template>
+<div class="container-fluid">
   <div class="masonry">
     <Keep :keep="k" v-for="k in keeps" :key="k.id" />
   </div>
+ </div>
+
 </template>
 
 <script>
