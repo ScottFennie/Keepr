@@ -9,10 +9,12 @@
             <h3>Vaults: {{vaults.length}}</h3>
             <h3>Keeps: {{keeps.length}}</h3>
         </div>
-        <div class="col-12 mt-5 ms-1 d-flex flex-row">
+        <div class="col-12 mt-5 ms-1 d-flex flex-row align-items-center">
             <h2>Vaults</h2>
-            <button class="ms-2" data-bs-toggle="modal"
-            data-bs-target="#newvault">+</button>
+            <h3 class="ps-1 pt-1 text-dark selectable" data-bs-toggle="modal"
+            data-bs-target="#newvault">
+            <i class="mdi mdi-plus-circle"></i>
+            </h3>
         </div>
         <div class="col-12 masonry">
             <div>
@@ -21,8 +23,10 @@
         </div>
         <div class="col-12 ms-1 d-flex flex-row">
             <h2>Keeps</h2>
-            <button class="ms-2" data-bs-toggle="modal"
-            data-bs-target="#newkeep">+</button>
+            <h3 class="ps-1 pt-1 text-dark selectable" data-bs-toggle="modal"
+            data-bs-target="#newkeep">
+            <i class="mdi mdi-plus-circle"></i>
+            </h3>
         </div>
         <div class="col-12 masonry">
             <Keep :keep="k" v-for="k in keeps" :key="k.id" />
