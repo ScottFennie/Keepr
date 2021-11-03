@@ -2,10 +2,10 @@
   <div class="item border-0 c-radius" @click="this.getCurrentKeep()" data-bs-toggle="modal"
           :data-bs-target="'#keep-' + keep.id" >
           <div class="">
-    <div class="card c-radius border-0 shadow">
+    <div class="card c-radius border-0 shadow d-flex align-items-end">
     <img :src="keep.img" class="card-img c-radius-outer border-0 tint" alt="...">
     <div class="card-img-overlay c-radius-outer border-0 tint">
-    <div class="d-flex justify-content-between align-content-center">
+    <div class="d-flex justify-content-between align-items-end">
     <h3 class="ms-1 text-white">{{keep.name}}</h3>
     <div v-if="keep.creator" @click="goToProfilePage(keep.creatorId)">
          <img class="rounded-circle prof-pic " :src="keep.creator.picture" alt="profile image">
@@ -95,7 +95,7 @@ export default {
 
 .tint{
 
-  background: linear-gradient(360deg, hsla(0, 0%, 0%, 0), hsla(0, 0%, 0%, 0),hsla(0, 0%, 0%, .35), hsla(0, 0%, 0%, .5));
+  background: linear-gradient(180deg, hsla(0, 0%, 0%, 0), hsla(0, 0%, 0%, 0),hsla(0, 0%, 0%, .35), hsla(0, 0%, 0%, .5));
 }
 
 /* The Masonry Container */

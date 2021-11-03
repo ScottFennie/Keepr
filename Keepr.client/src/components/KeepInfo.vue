@@ -2,8 +2,8 @@
 <template>
 <div class="container-fluid p-0 m-0" v-if="keep">
     <div class="row p-0 m-0 text-white">
-        <div class="col-md-6 p-0 m-0" v-if="keep">
-            <img :src="keep.img" alt="" class="img-fluid rounded-start">
+        <div class="col-md-6 p-0 m-0 d-flex align-items-center" v-if="keep">
+            <img :src="keep.img" alt="" class=" mx-2 my-2 img-fluid rounded">
         </div>
         <div class="col-md-6">
             <div class="row">
@@ -79,6 +79,12 @@ export default {
 
 .center-space{
     height: 20vh;
+}
+
+#foo {
+    position: fixed;
+    bottom: 0;
+    right: 0;
 }
 
 </style>

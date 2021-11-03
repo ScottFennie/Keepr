@@ -11,14 +11,23 @@ namespace Keepr.Services
 
         private readonly VaultsRepository _vaultsRepository;
 
-        public VaultKeepsService(VaultKeepsRepository vaultKeepsRepository, VaultsRepository vaultsRepository)
+        private readonly KeepsRepository _keepsRepository;
+
+        public VaultKeepsService(VaultKeepsRepository vaultKeepsRepository, VaultsRepository vaultsRepository, KeepsRepository keepsRepository)
         {
             _vaultKeepsRepository = vaultKeepsRepository;
             _vaultsRepository = vaultsRepository;
+            _keepsRepository = keepsRepository;
         }
 
         public VaultKeep CreateVaultKeep(VaultKeep data)
-        {
+        {   
+            Vault foundVault = _vaultsRepository.GetById(data.VaultId);
+            Keep foundKeep = _keepsRepository.GetById(data.KeepId);
+
+            if(foundKeep.CreatorId != data.CreatorId || foundKeep.CreatorId != data.CreatorId){
+                throw new Exception("You cant do that!");
+            }
             return _vaultKeepsRepository.CreateVaultKeep(data);
         }
 
