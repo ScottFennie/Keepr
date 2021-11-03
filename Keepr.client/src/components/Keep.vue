@@ -1,5 +1,5 @@
 <template>
-  <div class="item border-0 c-radius" @click="this.getCurrentKeep(keep.id)" data-bs-toggle="modal"
+  <div class="item border-0 c-radius" @click="this.getCurrentKeep()" data-bs-toggle="modal"
           :data-bs-target="'#keep-' + keep.id" >
           <div class="">
     <div class="card c-radius border-0 shadow">
@@ -18,30 +18,40 @@
 
    <Modal :id="'keep-' + keep.id">
     <template #modal-body>
-      <KeepInfo />
+      <div v-if="vault != null">
+        <VaultKeepInfo />
+      </div>
+      <div v-else>
+        <KeepInfo />
+      </div>
     </template>
   </Modal>
 </template>
 
 <script>
+import { computed } from '@vue/reactivity'
 import { Keep } from '../models/Keep'
 import { router } from '../router'
 import { keepsService } from '../services/KeepsService'
 import Pop from '../utils/Pop'
+import { AppState } from '../AppState'
 export default {
    props: {
     keep: {
-      type: Keep,
+      type: Object,
       required: true
     }
   },
-  setup(){
+  setup(props){
     return{
       // account: computed(() => AppState.account)
-      async getCurrentKeep(keepId){
+      vault: computed(() => AppState.currentVault),
+      async getCurrentKeep(){
        try {
-         await keepsService.getCurrentKeep(keepId)
-         await keepsService.addViewToKeep(keepId)
+         await keepsService.getCurrentKeep(props.keep.id)
+         if(props.keep.vaultKeepId){
+           await keepsService.getCurrentVaultKeep(props.keep.vaultKeepId)
+         }
        } catch (error) {
         Pop.toast(error)
        }

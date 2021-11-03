@@ -19,6 +19,13 @@ class KeepsService{
 
     }
 
+    async getCurrentVaultKeep(vaultKeepId){
+        const foundvaultkeep = AppState.vaultKeeps.find(v => v.vaultKeepId === vaultKeepId)
+        AppState.currentVaultKeep = foundvaultkeep
+        logger.log("current Vault keep", AppState.currentVaultKeep)
+
+    }
+
     async addViewToKeep(keepId){
 
         const foundKeep = AppState.keeps.find(k => k.id === keepId)
@@ -37,6 +44,10 @@ class KeepsService{
         const res = await api.delete(`api/keeps/${keepId}`)
         AppState.keeps = AppState.keeps.filter(k => k.id !== keepId)
         AppState.profileKeeps = AppState.profileKeeps.filter(k => k.id !== keepId)
+    }
+    async deleteVaultKeep(vaultKeepId) {
+        const res = await api.delete(`api/vaultkeeps/${vaultKeepId}`)
+        AppState.vaultKeeps = AppState.vaultKeeps.filter(v => v.vaultKeepId !== vaultKeepId)
     }
 
 }

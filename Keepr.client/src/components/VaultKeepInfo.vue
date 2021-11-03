@@ -1,4 +1,3 @@
-
 <template>
 <div class="container-fluid p-0 m-0" v-if="keep">
     <div class="row p-0 m-0 text-white">
@@ -31,7 +30,7 @@
                         </ul>
                     </div>
                     <div v-else>
-                        <button class="btn btn-dark text-white">Remove From Vault</button>
+                        <button class="btn btn-primary text-white" @click="deleteVaultKeep(keep.vaultKeepId)">Remove From Vault</button>
                     </div>
                     <div class="text-center" v-if="keep.creatorId === account.id" @click="deleteKeep(keep.id)" data-bs-dismiss="modal" aria-label="Close">
                         <h3 class="selectable"><i class="mdi mdi-delete"></i></h3>
@@ -54,7 +53,7 @@ import { keepsService } from '../services/KeepsService'
 export default {
   setup() {
     return {
-        keep: computed(() => AppState.currentKeep),
+        keep: computed(() => AppState.currentVaultKeep),
         account: computed(() => AppState.account),
         vaults: computed(() => AppState.profileVaults),
         currentvault: computed(() => AppState.currentVault),
@@ -62,6 +61,13 @@ export default {
         async deleteKeep(keepId) {
         try {
           await keepsService.deleteKeep(keepId)
+        } catch (error) {
+          Pop.toast(error)
+        }
+      },
+        async deleteVaultKeep(vaultkeepId) {
+        try {
+          await keepsService.deleteVaultKeep(vaultkeepId)
         } catch (error) {
           Pop.toast(error)
         }
