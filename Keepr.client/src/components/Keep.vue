@@ -3,8 +3,8 @@
           :data-bs-target="'#keep-' + keep.id" >
           <div class="">
     <div class="card c-radius border-0 shadow">
-    <img :src="keep.img" class="card-img c-radius border-0 tint" alt="...">
-    <div class="card-img-overlay c-radius border-0 tint">
+    <img :src="keep.img" class="card-img c-radius-outer border-0 tint" alt="...">
+    <div class="card-img-overlay c-radius-outer border-0 tint">
     <div class="d-flex justify-content-between align-content-center">
     <h3 class="ms-1 text-white">{{keep.name}}</h3>
     <div v-if="keep.creator" @click="goToProfilePage(keep.creatorId)">
@@ -79,8 +79,8 @@ export default {
   transition: all .2s ease-in-out;
 }
 
-.card:hover{
-  transform: scale(0.98)
+.item:hover{
+  // transform: scale(0.98)
 }
 
 .tint{
@@ -121,6 +121,9 @@ export default {
 
 .c-radius{
   border-radius: 30px;
+}
+.c-radius-outer{
+  border-radius: 25px;
 }
 
 .c-shadow{

@@ -32,7 +32,7 @@ export default {
   border-radius: 5px;
   background-color: rgba(255, 255, 255, 0.15);
   
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(25px);
 }
 
 

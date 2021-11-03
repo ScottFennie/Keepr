@@ -25,7 +25,7 @@ export default {
 @import "./assets/scss/main.scss";
 
 main{
-  background-color: white;
+  background-color: #1d1c1c;
 }
 
 </style>

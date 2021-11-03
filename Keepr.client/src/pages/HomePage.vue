@@ -9,6 +9,7 @@ import { computed, onMounted } from '@vue/runtime-core'
 import { AppState } from '../AppState'
 import { keepsService } from '../services/keepsService'
 import Pop from '../utils/Pop'
+import { profileService } from '../services/ProfileService'
 export default {
  setup(){
    onMounted(async() => {
@@ -19,7 +20,9 @@ export default {
       }
     })
    return{
-     keeps: computed(() => AppState.keeps)
+     account: computed(() => AppState.account),
+     keeps: computed(() => AppState.keeps),
+     vaults: computed(() => AppState.profileVaults)
 
    }
  }

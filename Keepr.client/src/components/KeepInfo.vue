@@ -22,9 +22,14 @@
                     <p class="pt-2 ps-3">{{keep.description}}</p>
                 </div>
                 <div class="col-12 d-flex justify-content-between align-items-center">
-                    <div>
-                        <button class="btn btn-primary">Add To Vault</button>
-                    </div>
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                            Add To Vault
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                            <DropDownVault :vault="v" v-for="v in vaults" :key="v.id" />
+                        </ul>
+                    </div> 
                     <div class="text-center" v-if="keep.creatorId === account.id" @click="deleteKeep(keep.id)" data-bs-dismiss="modal" aria-label="Close">
                         <h3 class="selectable"><i class="mdi mdi-delete"></i></h3>
                     </div>
@@ -48,6 +53,7 @@ export default {
     return {
         keep: computed(() => AppState.currentKeep),
         account: computed(() => AppState.account),
+        vaults: computed(() => AppState.profileVaults),
 
         async deleteKeep(keepId) {
         try {

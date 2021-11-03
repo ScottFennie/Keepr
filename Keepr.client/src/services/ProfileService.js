@@ -25,6 +25,7 @@ class ProfileService{
         AppState.profileVaults = []
         const res = await api.get(`api/profiles/${profileId}/vaults`)
         AppState.profileVaults = res.data.map(v => new Vault(v))
+        logger.log("Here are all the vaults", AppState.profileVaults)
 
     }
 }
