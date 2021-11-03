@@ -11,7 +11,8 @@
         </div>
         <div class="col-12 mt-5 ms-1 d-flex flex-row">
             <h2>Vaults</h2>
-            <button class="ms-2">+</button>
+            <button class="ms-2" data-bs-toggle="modal"
+            data-bs-target="#newvault">+</button>
         </div>
         <div class="col-12 masonry">
             <div>
@@ -32,6 +33,11 @@
    <Modal :id="'newkeep'">
     <template #modal-body>
       <CreateKeep />
+    </template>
+  </Modal>
+   <Modal :id="'newvault'">
+    <template #modal-body>
+      <CreateVault />
     </template>
   </Modal>
   

@@ -1,7 +1,7 @@
 
 <template>
 <div class="container-fluid p-0 m-0" v-if="keep">
-    <div class="row p-0 m-0">
+    <div class="row p-0 m-0 text-white">
         <div class="col-md-6 p-0 m-0" v-if="keep">
             <img :src="keep.img" alt="" class="img-fluid rounded-start">
         </div>

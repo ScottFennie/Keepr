@@ -79,7 +79,7 @@ export default {
 color: #E62D90;
 }
 .button-pink{
-background-color: #E62D90;
+background-color: black;
 border: none;
 }
 .high-priority{

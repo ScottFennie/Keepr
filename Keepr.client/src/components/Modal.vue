@@ -28,6 +28,11 @@ export default {
 .modal-content{
     padding: 0;
     margin: 0;
+  box-shadow: 0 0 1rem 0 rgba(0, 0, 0, .2); 
+  border-radius: 5px;
+  background-color: rgba(15, 4, 4, 0.15);
+  
+  backdrop-filter: blur(10px);
 }
 
 
