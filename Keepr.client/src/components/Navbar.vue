@@ -168,6 +168,14 @@ background: linear-gradient(to right, #0083B0, #00B4DB); /* W3C, IE 10+/ Edge, F
   border: 1px solid white;
 }
 
+.glass{
+    box-shadow: 0 0 1rem 0 rgba(0, 0, 0, .2); 
+  border-radius: 5px;
+  background-color: rgba(15, 4, 4, 0.15);
+  
+  backdrop-filter: blur(10px);
+}
+
 .search-container{
     background: #fff;
     height: 35px;

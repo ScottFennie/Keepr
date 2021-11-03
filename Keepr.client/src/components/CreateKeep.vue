@@ -11,9 +11,10 @@
         </h5>
         <input type="Name"
                class="form-control bg-white mb-2"
-               id="Name"
+               id="name"
                placeholder="Name"
-               name="Name"
+               v-model="editable.name"
+               name="name"
                required
         >
       </div>
@@ -21,9 +22,10 @@
         <div class="input-group mb-2">
           <input type="text"
                class="form-control bg-white"
-               id="Description"
+               id="description"
                placeholder="Description"
-               name="Description"
+               v-model="editable.description"
+               name="description"
                required
         >
         </div>
@@ -32,9 +34,10 @@
         <div class="input-group mb-2">
             <input type="url"
                class="form-control bg-white mb-2"
-               id="Img"
+               id="img"
+               v-model="editable.img"
                placeholder="Image Url"
-               name="Img"
+               name="img"
                required
         >
         </div>
@@ -58,7 +61,7 @@ export default {
     const editable = ref({})
     return {
       editable,
-      async createBug() {
+      async createKeep() {
         try {
           await keepsService.createKeep(editable.value)
           editable.value = ({})

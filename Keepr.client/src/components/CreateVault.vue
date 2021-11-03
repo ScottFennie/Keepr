@@ -11,9 +11,10 @@
         </h5>
         <input type="Name"
                class="form-control form-color text-white border-0 mb-2"
-               id="Name"
+               id="name"
                placeholder="Name"
-               name="Name"
+               v-model="editable.name"
+               name="name"
                required
         >
       </div>
@@ -21,9 +22,10 @@
         <div class="input-group mb-2">
           <input type="text"
                class="form-control form-color text-white border-0"
-               id="Description"
+               id="description"
                placeholder="Description"
-               name="Description"
+               v-model="editable.description"
+               name="description"
                required
         >
         </div>
@@ -32,9 +34,10 @@
         <div class="input-group mb-2">
             <input type="url"
                class="form-control form-color text-white border-0 mb-2"
-               id="Img"
+               id="img"
                placeholder="Image Url"
-               name="Img"
+               v-model="editable.img"
+               name="img"
                required
         >
         </div>
@@ -47,8 +50,8 @@
             <input type="checkbox"
                class="bg-white ms-2 mb-2"
                id="isPrivate"
+               v-model="editable.isPrivate"
                name="isPrivate"
-               required
         >
         </div>
    </div>
@@ -66,16 +69,17 @@
 import { ref } from '@vue/reactivity'
 import Pop from '../utils/Pop'
 import { keepsService } from '../services/KeepsService'
+import { vaultsService } from '../services/VaultsService'
 export default {
   setup() {
     const editable = ref({})
     return {
       editable,
-      async createBug() {
+      async createVault() {
         try {
-          await keepsService.createKeep(editable.value)
+          await vaultsService.createVault(editable.value)
           editable.value = ({})
-          Pop.toast('New Keep Created!', 'success')
+          Pop.toast('New Vault Created!', 'success')
         } catch (error) {
           Pop.toast(error.message, 'error')
         }

@@ -19,8 +19,8 @@ namespace Keepr.Repositories
         public Vault CreateVault(Vault data)
         {
             var sql = @"
-            INSERT INTO vaults(name, description, isPrivate, creatorId)
-            VALUES(@Name, @Description, @IsPrivate, @CreatorId);
+            INSERT INTO vaults(name, description, isPrivate, creatorId, img)
+            VALUES(@Name, @Description, @IsPrivate, @CreatorId, @Img);
             SELECT LAST_INSERT_ID();
             ";
             var id = _db.ExecuteScalar<int>(sql, data);

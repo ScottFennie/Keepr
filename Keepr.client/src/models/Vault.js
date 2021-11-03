@@ -8,5 +8,6 @@ export class Vault{
         this.name = data.name
         this.description = data.description
         this.isPrivate = data.isPrivate
+        this.img = data.img
     }
 }

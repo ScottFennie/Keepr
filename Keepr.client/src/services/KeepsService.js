@@ -28,5 +28,10 @@ class KeepsService{
         logger.log("here is the new keep with views", res.data)
     }
 
+    async createKeep(keepData) {
+        const res = await api.post('api/keeps', keepData)
+        AppState.profileKeeps.push(new Keep(res.data))
+      }
+
 }
 export const keepsService = new KeepsService()
