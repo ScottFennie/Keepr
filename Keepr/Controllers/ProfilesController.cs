@@ -1,4 +1,6 @@
 using System.Collections.Generic;
+using System.Threading.Tasks;
+using CodeWorks.Auth0Provider;
 using Keepr.Models;
 using Keepr.Services;
 using Microsoft.AspNetCore.Mvc;
@@ -45,11 +47,19 @@ namespace Keepr.Controllers
     }
   
     [HttpGet("{profileId}/vaults")]
-    public ActionResult<List<Vault>> GetVaultsByProfileId(string profileId)
+    public async Task<ActionResult<List<Vault>>> GetVaultsByProfileIdAsync(string profileId)
     {
       try
       {
-        List<Vault> vaults = _profilesService.GetVaultsByProfileId(profileId);
+        string myId = "";
+        var userInfo = await HttpContext.GetUserInfoAsync<Account>(); 
+        if(userInfo == null){
+          myId = "0";
+          List<Vault> vaultsNoAuth = _profilesService.GetVaultsByProfileId(profileId, myId);
+        return Ok(vaultsNoAuth);
+        }
+        myId = userInfo.Id;
+        List<Vault> vaults = _profilesService.GetVaultsByProfileId(profileId, myId);
         return Ok(vaults);
       }
       catch (System.Exception e)

@@ -42,7 +42,7 @@ namespace Keepr.Repositories
                return k;
            }, new {profileId}).ToList();
         }
-    public List<Vault> GetVaultsByProfileId(string profileId)
+    public List<Vault> GetVaultsByProfileIdPrivate(string profileId)
         {
            string sql = @"
            SELECT
@@ -51,6 +51,20 @@ namespace Keepr.Repositories
            FROM vaults v
            JOIN accounts a on v.creatorId = a.id
            WHERE v.creatorId = @profileId;";
+           return _db.Query<Vault, Profile, Vault>(sql, (v, a) =>{
+               v.Creator = a;
+               return v;
+           }, new {profileId}).ToList();
+        }
+    public List<Vault> GetVaultsByProfileIdPublic(string profileId)
+        {
+           string sql = @"
+           SELECT
+           v.*,
+           a.*
+           FROM vaults v
+           JOIN accounts a on v.creatorId = a.id
+           WHERE v.creatorId = @profileId AND isPrivate = 0;";
            return _db.Query<Vault, Profile, Vault>(sql, (v, a) =>{
                v.Creator = a;
                return v;

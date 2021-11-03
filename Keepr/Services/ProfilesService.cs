@@ -31,9 +31,13 @@ namespace Keepr.Services
             return _profilesRepository.GetKeepsByProfileId(profileId);
         }
         
-        public List<Vault> GetVaultsByProfileId(string profileId)
+        public List<Vault> GetVaultsByProfileId(string profileId, string userId)
         {
-            return _profilesRepository.GetVaultsByProfileId(profileId);
+            if(profileId == userId){
+                return _profilesRepository.GetVaultsByProfileIdPrivate(profileId);
+            }
+            return _profilesRepository.GetVaultsByProfileIdPublic(profileId);
+            
         }
 
 
