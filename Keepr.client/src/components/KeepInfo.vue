@@ -25,7 +25,7 @@
                     <div>
                         <button class="btn btn-primary">Add To Vault</button>
                     </div>
-                    <div class="text-center" v-if="keep.creatorId === account.id">
+                    <div class="text-center" v-if="keep.creatorId === account.id" @click="deleteKeep(keep.id)" data-bs-dismiss="modal" aria-label="Close">
                         <h3 class="selectable"><i class="mdi mdi-delete"></i></h3>
                     </div>
                     <div v-if="keep.creator">
@@ -42,11 +42,20 @@
 <script>
 import { computed } from '@vue/reactivity'
 import { AppState } from '../AppState'
+import { keepsService } from '../services/KeepsService'
 export default {
   setup() {
     return {
         keep: computed(() => AppState.currentKeep),
-        account: computed(() => AppState.account)
+        account: computed(() => AppState.account),
+
+        async deleteKeep(keepId) {
+        try {
+          await keepsService.deleteKeep(keepId)
+        } catch (error) {
+          Pop.toast(error)
+        }
+      }
     }
   }
 }

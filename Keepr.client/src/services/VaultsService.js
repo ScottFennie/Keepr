@@ -24,7 +24,12 @@ class VaultsService{
     async createVault(vaultData) {
         const res = await api.post('api/vaults', vaultData)
         AppState.profileVaults.push(new Vault(res.data))
-      }
+    }
+
+    async deleteVault(vaultId) {
+        const res = await api.delete(`api/vaults/${vaultId}`)
+        AppState.profileVaults = AppState.profileVaults.filter(v => v.id !== vaultId)
+    }
 
 }
 export const vaultsService = new VaultsService()
