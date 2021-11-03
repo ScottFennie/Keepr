@@ -1,15 +1,15 @@
 <template>
-<div class="container-fluid">
+<div class="container">
     <div class="row pt-4">
         <div class="col-md-3" v-if="profile">
-            <img :src="profile.picture" alt="" class="big-prof rounded ms-5">
+            <img :src="profile.picture" alt="" class="big-prof rounded ms-1">
         </div>
         <div class="col-md-9" v-if="profile">
             <h1>{{profile.name}}</h1>
             <h3>Vaults: {{vaults.length}}</h3>
             <h3>Keeps: {{keeps.length}}</h3>
         </div>
-        <div class="col-12 mt-5 ms-5 d-flex flex-row">
+        <div class="col-12 mt-5 ms-1 d-flex flex-row">
             <h2>Vaults</h2>
             <button class="ms-2" data-bs-toggle="modal"
             data-bs-target="#newkeep">+</button>
@@ -19,7 +19,7 @@
             <Vault :vault="v" v-for="v in vaults" :key="v.id" />
             </div>
         </div>
-        <div class="col-12 ms-5 d-flex flex-row">
+        <div class="col-12 ms-1 d-flex flex-row">
             <h2>Keeps</h2>
             <button class="ms-2">+</button>
         </div>
@@ -72,7 +72,7 @@ export default {
 
 <style lang="scss">
 .big-prof{
-    height:20vh;
+    height:25vh;
 }
 
 /* The Masonry Container */

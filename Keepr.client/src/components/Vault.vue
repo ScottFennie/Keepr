@@ -19,7 +19,7 @@
 <script>
 import { Vault } from '../models/Vault'
 import { router } from '../router'
-import { keepsService } from '../services/KeepsService'
+import { vaultsService } from '../services/VaultsService'
 import Pop from '../utils/Pop'
 export default {
    props: {
@@ -31,10 +31,10 @@ export default {
   setup(){
     return{
       // account: computed(() => AppState.account)
-      async getCurrentKeep(keepId){
+      async getCurrentVault(vaultId){
        try {
-         await keepsService.getCurrentKeep(keepId)
-         await keepsService.addViewToKeep(keepId)
+         await vaultsService.getVaultByVaultId(vaultId)
+         router.push({ name: 'Vault', params: { vaultId: vaultId } })
        } catch (error) {
         Pop.toast(error)
        }
