@@ -4,14 +4,14 @@
         <div class="col-md-3" v-if="profile">
             <img :src="profile.picture" alt="" class="big-prof rounded ms-1">
         </div>
-        <div class="col-md-9" v-if="profile">
+        <div class="col-md-9 text-white" v-if="profile">
             <h1>{{profile.name}}</h1>
             <h3>Vaults: {{vaults.length}}</h3>
             <h3>Keeps: {{keeps.length}}</h3>
         </div>
-        <div class="col-12 mt-5 ms-1 d-flex flex-row align-items-center">
+        <div class="col-12 mt-5 ms-1 d-flex flex-row align-items-center text-white">
             <h2>Vaults</h2>
-            <h3 class="ps-1 pt-1 text-dark selectable" data-bs-toggle="modal"
+            <h3 class="ps-1 pt-1 selectable" data-bs-toggle="modal"
             data-bs-target="#newvault">
             <i class="mdi mdi-plus-circle"></i>
             </h3>
@@ -21,9 +21,9 @@
             <Vault :vault="v" v-for="v in vaults" :key="v.id" />
             </div>
         </div>
-        <div class="col-12 ms-1 d-flex flex-row">
+        <div class="col-12 ms-1 d-flex flex-row text-white">
             <h2>Keeps</h2>
-            <h3 class="ps-1 pt-1 text-dark selectable" data-bs-toggle="modal"
+            <h3 class="ps-1 pt-1 selectable" data-bs-toggle="modal"
             data-bs-target="#newkeep">
             <i class="mdi mdi-plus-circle"></i>
             </h3>
@@ -98,7 +98,7 @@ export default {
 // /* Masonry on large screens */
 @media only screen and (min-width: 1024px) {
   .masonry {
-    column-count: 4;
+    column-count:5;
   }
 }
 

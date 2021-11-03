@@ -1,7 +1,7 @@
 <template>
   <div class="container">
-      <div class="row mt-3">
-          <div class="col-6 d-flex flex-column">
+      <div class="row mt-5">
+          <div class="col-6 d-flex flex-column text-white">
               <h1>{{vault.name}}</h1>
               <h5 class="ms-1">Keeps: {{keeps.length}}</h5>
           </div>
@@ -20,7 +20,7 @@ import { computed } from '@vue/reactivity'
 import { AppState } from '../AppState'
 import { useRoute } from 'vue-router'
 import { vaultsService } from '../services/VaultsService'
-import { onMounted } from '@vue/runtime-core'
+import { onMounted, onUnmounted } from '@vue/runtime-core'
 import Pop from '../utils/Pop'
 import { router } from '../router'
 export default {
@@ -32,6 +32,13 @@ export default {
       try {
         await vaultsService.getVaultByVaultId(route.params.vaultId)
         await vaultsService.getKeepsByVaultId(route.params.vaultId)
+      } catch (error) {
+        Pop.toast(error, 'error')
+      }
+    })
+   onUnmounted(async() => {
+      try {
+        await vaultsService.setBlankVault()
       } catch (error) {
         Pop.toast(error, 'error')
       }

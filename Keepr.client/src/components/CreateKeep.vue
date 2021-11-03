@@ -6,7 +6,7 @@
                <div class="d-flex justify-content-end pt-2">
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-        <h5 class="mb-2 t-color">
+        <h5 class="mb-2 t-color text-white">
           New Keep
         </h5>
         <input type="Name"

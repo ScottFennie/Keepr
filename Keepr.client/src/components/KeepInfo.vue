@@ -13,13 +13,13 @@
         </div>
                 </div>
                 <div class="col-12 d-flex justify-content-center">
-                    <h5 class="pe-2"><i class="mdi mdi-eye"></i> {{keep.views}}</h5>
-                    <h5 class="pe-2"><i class="mdi mdi-content-save"></i> {{keep.keeps}}</h5>
-                    <h5 class="pe-2"><i class="mdi mdi-share-variant"></i> {{keep.shares}}</h5>
+                    <h5 class="px-1"><i class="mdi mdi-eye"></i> {{keep.views}}</h5>
+                    <h5 class="px-1"><i class="mdi mdi-content-save"></i> {{keep.keeps}}</h5>
+                    <h5 class="px-1"><i class="mdi mdi-share-variant"></i> {{keep.shares}}</h5>
                 </div>
-                <div class="col-12">
-                    <h1 class="mt-4 d-flex justify-content-center">{{keep.name}}</h1>
-                    <p class="pt-2 ps-3">{{keep.description}}</p>
+                <div class="col-12 center-space">
+                    <h2 class="mt-3 d-flex justify-content-center">{{keep.name}}</h2>
+                    <p class="pt-3 ps-3">{{keep.description}}</p>
                 </div>
                 <div class="col-12 d-flex justify-content-between align-items-center">
                     <div class="dropdown">
@@ -71,6 +71,10 @@ export default {
 
 .prof-height{
     height: 3vh;
+}
+
+.center-space{
+    height: 20vh;
 }
 
 </style>

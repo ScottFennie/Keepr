@@ -1,9 +1,9 @@
 <template>
-  <div class="item" @click="this.getCurrentVault(vault.id)">
-          <div class="rounded">
-    <div class="card card-keep c-radius shadow">
-    <img :src="vault.img" class="card-img c-radius tint" alt="">
-    <div class="card-img-overlay c-radius tint">
+  <div class="item c-radius border-0" @click="this.getCurrentVault(vault.id)">
+          <div class="">
+    <div class="card card-keep c-radius border-0 shadow">
+    <img :src="vault.img" class="card-img c-radius-outer border-0 tint" alt="">
+    <div class="card-img-overlay c-radius-outer border-0 tint">
     <div class="d-flex justify-content-between align-content-center">
     <h3 class="text-white">{{vault.name}}</h3>
     <!-- <div v-if="keep.creator" @click="goToProfilePage(keep.creatorId)">
@@ -79,6 +79,10 @@ export default {
 
 .c-radius{
   border-radius: 30px;
+}
+
+.c-radius-outer{
+  border-radius: 25px;
 }
 
 </style>
