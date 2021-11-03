@@ -11,7 +11,7 @@
         />
       </div>
       <h1 class=" ms-2 mt-1 text-white title-text">
-        AstroPost
+        SpaceBook
       </h1>
     </router-link>
     <div class="search-container text-danger">

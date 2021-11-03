@@ -11,8 +11,7 @@
         </div>
         <div class="col-12 mt-5 ms-1 d-flex flex-row">
             <h2>Vaults</h2>
-            <button class="ms-2" data-bs-toggle="modal"
-            data-bs-target="#newkeep">+</button>
+            <button class="ms-2">+</button>
         </div>
         <div class="col-12 masonry">
             <div>
@@ -21,7 +20,8 @@
         </div>
         <div class="col-12 ms-1 d-flex flex-row">
             <h2>Keeps</h2>
-            <button class="ms-2">+</button>
+            <button class="ms-2" data-bs-toggle="modal"
+            data-bs-target="#newkeep">+</button>
         </div>
         <div class="col-12 masonry">
             <Keep :keep="k" v-for="k in keeps" :key="k.id" />
