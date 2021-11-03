@@ -6,7 +6,7 @@
               <h5 class="ms-1">Keeps: {{keeps.length}}</h5>
           </div>
           <div class="col-6 d-flex justify-content-end" v-if="vault.creatorId == account.id">
-              <button class="btn btn-dark text-white">Delete Vault</button>
+              <button class="btn btn-dark text-white" @click="deleteVault(vault.id)">Delete Vault</button>
           </div>
           <div class="col-12 masonry">
             <Keep :keep="k" v-for="k in keeps" :key="k.id" />
@@ -22,6 +22,7 @@ import { useRoute } from 'vue-router'
 import { vaultsService } from '../services/VaultsService'
 import { onMounted } from '@vue/runtime-core'
 import Pop from '../utils/Pop'
+import { router } from '../router'
 export default {
     setup(){
 
@@ -38,7 +39,16 @@ export default {
         return{
         vault: computed(() => AppState.currentVault),
         account: computed(() => AppState.account),
-        keeps: computed(() => AppState.vaultKeeps)
+        keeps: computed(() => AppState.vaultKeeps),
+
+        async deleteVault(vaultId){
+          try {
+          await vaultsService.deleteVault(vaultId)
+          router.push({ name: 'Home'})
+        } catch (error) {
+          Pop.toast(error)
+        }
+        }
         }
     }
 
