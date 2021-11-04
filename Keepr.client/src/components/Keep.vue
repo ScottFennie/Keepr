@@ -50,7 +50,6 @@ export default {
       vault: computed(() => AppState.currentVault),
       profile: computed(() => AppState.currentProfile),
       async getCurrentKeep(){
-      await keepsService.addViewToKeep(props.keep.id)
          if(props.keep.vaultKeepId){
            await keepsService.getCurrentVaultKeep(props.keep.vaultKeepId)
          }},

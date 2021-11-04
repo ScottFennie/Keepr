@@ -39,9 +39,6 @@ namespace Keepr.Services
             Keep foundKeep = GetById(editedKeep.Id);
             if(foundKeep.CreatorId != editedKeep.CreatorId)
             {
-                if(editedKeep.Views != foundKeep.Views){
-                    IncreaseViews(editedKeep);
-                }
                 if(editedKeep.Keeps != foundKeep.Keeps){
                     IncreaseSaves(editedKeep);
                 }

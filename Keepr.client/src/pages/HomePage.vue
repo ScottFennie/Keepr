@@ -5,16 +5,25 @@
 </template>
 
 <script>
-import { computed, onMounted } from '@vue/runtime-core'
+import { computed, onMounted, onUnmounted } from '@vue/runtime-core'
 import { AppState } from '../AppState'
 import { keepsService } from '../services/keepsService'
 import Pop from '../utils/Pop'
 import { profileService } from '../services/ProfileService'
+import { vaultsService } from '../services/VaultsService'
 export default {
  setup(){
    onMounted(async() => {
       try {
         await keepsService.getAllKeeps()
+        await profileService.getVaultsByProfileId(AppState.account.id)
+      } catch (error) {
+        Pop.toast(error, 'error')
+      }
+    })
+    onUnmounted(async() => {
+      try {
+        await vaultsService.setBlankVaults()
       } catch (error) {
         Pop.toast(error, 'error')
       }

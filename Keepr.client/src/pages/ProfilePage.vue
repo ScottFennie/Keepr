@@ -48,20 +48,29 @@
 </template>
 
 <script>
-import { computed, onMounted } from '@vue/runtime-core'
+import { computed, onMounted, onUnmounted } from '@vue/runtime-core'
 import { useRoute } from 'vue-router'
 import { profileService } from '../services/ProfileService'
 import { AppState } from '../AppState'
 import CreateKeep from '../components/CreateKeep.vue'
+import { keepsService } from '../services/KeepsService'
 export default {
     setup(){
     const route = useRoute()
 
     onMounted(async() => {
       try {
+        await keepsService.profPageTrue()
         await profileService.getProfileById(route.params.profileId)
         await profileService.getKeepsByProfileId(route.params.profileId)
         await profileService.getVaultsByProfileId(route.params.profileId)
+      } catch (error) {
+        Pop.toast(error, 'error')
+      }
+    })
+      onUnmounted(async() => {
+      try {
+        await keepsService.profPageFalse()
       } catch (error) {
         Pop.toast(error, 'error')
       }
@@ -70,7 +79,8 @@ export default {
 
         profile: computed(() => AppState.currentProfile),
         keeps: computed(() => AppState.profileKeeps),
-        vaults: computed(() => AppState.profileVaults)
+        vaults: computed(() => AppState.profileVaults),
+        account: computed(() => AppState.account),
 
 
         }

@@ -42,6 +42,7 @@ class KeepsService{
         const keepData = {}
         keepData.keeps = foundKeep.keeps += 1
         const res = await api.put(`api/keeps/${keepId}`, keepData)
+        AppState.currentKeep = res.data
     }
 
     async createKeep(keepData) {
@@ -57,6 +58,14 @@ class KeepsService{
     async deleteVaultKeep(vaultKeepId) {
         const res = await api.delete(`api/vaultkeeps/${vaultKeepId}`)
         AppState.vaultKeeps = AppState.vaultKeeps.filter(v => v.vaultKeepId !== vaultKeepId)
+    }
+
+    async profPageTrue(){
+        AppState.profPage = true
+    }
+
+    async profPageFalse(){
+        AppState.profPage = false 
     }
 
 }

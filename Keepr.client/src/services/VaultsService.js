@@ -25,7 +25,6 @@ class VaultsService{
     
     }
     async checkIfYourVault(vaultId){
-        debugger
         const foundVault = await api.get(`api/vaults/${vaultId}`)
         if(foundVault.isPrivate == true && foundVault.creatorId !== AppState.account.id){
         router.push({ name: 'Home'})
@@ -51,6 +50,9 @@ class VaultsService{
     async setBlankVault() {
         AppState.currentVault = null
         logger.log("Current Vault Appstate", AppState.currentVault)
+    }
+    async setBlankVaults() {
+        AppState.profileVaults = []
     }
 
     
