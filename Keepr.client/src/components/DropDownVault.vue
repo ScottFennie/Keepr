@@ -5,6 +5,7 @@
 <script>
 import { AppState } from '../AppState'
 import { Vault } from '../models/Vault'
+import { keepsService } from '../services/KeepsService'
 import { vaultsService } from '../services/VaultsService'
 import Pop from '../utils/Pop'
 export default {
@@ -18,9 +19,10 @@ export default {
         return{
             async createVaultKeep(vaultId){
                 try {
-                  await vaultsService.createVaultKeep(AppState.currentKeep.id, vaultId)  
+                  await vaultsService.createVaultKeep(AppState.currentKeep.id, vaultId)
+                  await keepsService.addKeepSave(AppState.currentKeep.id) 
                 } catch (error) {
-                  Pop.toast(error)  
+                  Pop.toast(error)
                 }
             }
 

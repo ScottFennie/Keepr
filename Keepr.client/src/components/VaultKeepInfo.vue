@@ -30,7 +30,7 @@
                         </ul>
                     </div>
                     <div v-else>
-                        <button class="btn btn-primary text-white" @click="deleteVaultKeep(keep.vaultKeepId)">Remove From Vault</button>
+                        <button class="btn btn-dark text-white" @click="deleteVaultKeep(keep.vaultKeepId)" data-bs-dismiss="modal" aria-label="Close">Remove From Vault</button>
                     </div>
                     <div class="text-center" v-if="keep.creatorId === account.id" @click="deleteKeep(keep.id)" data-bs-dismiss="modal" aria-label="Close">
                         <h3 class="selectable"><i class="mdi mdi-delete"></i></h3>

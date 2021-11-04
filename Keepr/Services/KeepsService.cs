@@ -42,11 +42,15 @@ namespace Keepr.Services
                 if(editedKeep.Views != foundKeep.Views){
                     IncreaseViews(editedKeep);
                 }
+                if(editedKeep.Keeps != foundKeep.Keeps){
+                    IncreaseSaves(editedKeep);
+                }
                 throw new Exception("Unauthorized");
             }
             foundKeep.Name = editedKeep.Name ?? foundKeep.Name;
             foundKeep.Description = editedKeep.Description ?? foundKeep.Description;
             foundKeep.Img = editedKeep.Img ?? foundKeep.Img;
+            foundKeep.Keeps = editedKeep.Keeps ?? foundKeep.Keeps;
             if(editedKeep.Views > foundKeep.Views)
             {
               foundKeep.Views = editedKeep.Views ?? foundKeep.Views;
@@ -61,6 +65,12 @@ namespace Keepr.Services
               foundKeep.Views = editedKeep.Views ?? foundKeep.Views;
             }
             return _keepsRepository.IncreaseViews(foundKeep);
+        }
+        public Keep IncreaseSaves(Keep editedKeep)
+        {
+            Keep foundKeep = GetById(editedKeep.Id);
+            foundKeep.Keeps = editedKeep.Keeps ?? foundKeep.Keeps;
+            return _keepsRepository.IncreaseSaves(foundKeep);
         }
 
         public void Delete(string userId, int keepId)

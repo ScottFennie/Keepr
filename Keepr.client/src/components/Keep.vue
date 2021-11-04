@@ -48,6 +48,7 @@ export default {
     return{
       // account: computed(() => AppState.account)
       vault: computed(() => AppState.currentVault),
+      profile: computed(() => AppState.currentProfile),
       async getCurrentKeep(){
        try {
          await keepsService.addViewToKeep(props.keep.id)

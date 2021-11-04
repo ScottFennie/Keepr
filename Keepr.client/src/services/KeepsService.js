@@ -35,6 +35,13 @@ class KeepsService{
         logger.log("here is the new keep with views", res.data)
     }
 
+    async addKeepSave(keepId){    
+        const foundKeep = AppState.keeps.find(k => k.id === keepId)
+        const keepData = {}
+        keepData.keeps = foundKeep.keeps += 1
+        const res = await api.put(`api/keeps/${keepId}`, keepData)
+    }
+
     async createKeep(keepData) {
         const res = await api.post('api/keeps', keepData)
         AppState.profileKeeps.push(new Keep(res.data))

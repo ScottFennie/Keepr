@@ -43,5 +43,7 @@ class VaultsService{
         logger.log("Current Vault Appstate", AppState.currentVault)
     }
 
+    
+
 }
 export const vaultsService = new VaultsService()
