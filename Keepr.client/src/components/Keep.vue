@@ -67,11 +67,7 @@ export default {
         }
       },
        async increaseViews(keepId) {
-        try {
-          await keepsService.getCurrentKeep(keepId)
-        } catch (error) {
-          Pop.toast(error)
-        }
+        await keepsService.getCurrentKeep(keepId)
       }
     }
   }
