@@ -23,7 +23,7 @@ namespace Keepr.Services
         public VaultKeep CreateVaultKeep(VaultKeep data)
         {   
             Vault foundVault = _vaultsRepository.GetById(data.VaultId);
-            Keep foundKeep = _keepsRepository.GetById(data.KeepId);
+            Keep foundKeep = _keepsRepository.GetByIdMinusViews(data.KeepId);
 
             if(foundVault.CreatorId != data.CreatorId){
                 throw new Exception("You cant do that!");

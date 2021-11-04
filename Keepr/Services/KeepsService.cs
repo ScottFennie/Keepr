@@ -33,6 +33,15 @@ namespace Keepr.Services
             }
             return foundKeep;
         }
+        public Keep GetByIdMinusViews(int id)
+        {
+            Keep foundKeep = _keepsRepository.GetByIdMinusViews(id);
+            if(foundKeep == null)
+            {
+                throw new Exception("Cannot find a keep by that Id");
+            }
+            return foundKeep;
+        }
 
         public Keep Edit(Keep editedKeep)
         {
@@ -67,7 +76,7 @@ namespace Keepr.Services
         }
         public Keep IncreaseSaves(Keep editedKeep)
         {
-            Keep foundKeep = GetById(editedKeep.Id);
+            Keep foundKeep = GetByIdMinusViews(editedKeep.Id);
             foundKeep.Keeps = editedKeep.Keeps ?? foundKeep.Keeps;
             return _keepsRepository.IncreaseSaves(foundKeep);
         }

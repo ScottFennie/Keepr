@@ -8,7 +8,7 @@
     <div class="d-flex justify-content-between align-items-end">
     <h3 class="ms-1 text-white">{{keep.name}}</h3>
     <div v-if="keep.creator" @click="goToProfilePage(keep.creatorId)"  data-bs-dismiss="modal" aria-label="Close">
-         <img class="rounded-circle prof-pic " :src="keep.creator.picture" alt="profile image">
+         <img class="rounded-circle prof-pic " :src="keep.creator.picture" alt="profile image" :title="keep.creator.name">
     </div>
   </div>
     </div>

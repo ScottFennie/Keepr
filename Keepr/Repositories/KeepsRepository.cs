@@ -61,6 +61,21 @@ namespace Keepr.Repositories
                 return k;
             }, new {keepId}).FirstOrDefault();
         }
+        public Keep GetByIdMinusViews(int keepId)
+        {
+            string sql = @"
+            SELECT
+            k.*,
+            a.*
+            FROM keeps k
+            JOIN accounts a on k.creatorId = a.id
+            WHERE k.id = @keepId;
+            ";
+            return _db.Query<Keep, Account, Keep>(sql, (k, a) => {
+                k.Creator = a;
+                return k;
+            }, new {keepId}).FirstOrDefault();
+        }
 
         public Keep Edit(Keep newData)
         {
@@ -70,7 +85,6 @@ namespace Keepr.Repositories
             name = @Name,
             description = @Description,
             img = @Img,
-            views = @Views,
             keeps = @Keeps
             WHERE id = @Id LIMIT 1;
             ";
@@ -88,8 +102,7 @@ namespace Keepr.Repositories
             SET
             name = @Name,
             description = @Description,
-            img = @Img,
-            views = @Views
+            img = @Img
             WHERE id = @Id LIMIT 1;
             ";
             var rowsAffected = _db.Execute(sql, newData);
