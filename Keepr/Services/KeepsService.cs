@@ -39,12 +39,28 @@ namespace Keepr.Services
             Keep foundKeep = GetById(editedKeep.Id);
             if(foundKeep.CreatorId != editedKeep.CreatorId)
             {
+                if(editedKeep.Views != foundKeep.Views){
+                    IncreaseViews(editedKeep);
+                }
                 throw new Exception("Unauthorized");
             }
             foundKeep.Name = editedKeep.Name ?? foundKeep.Name;
             foundKeep.Description = editedKeep.Description ?? foundKeep.Description;
             foundKeep.Img = editedKeep.Img ?? foundKeep.Img;
+            if(editedKeep.Views > foundKeep.Views)
+            {
+              foundKeep.Views = editedKeep.Views ?? foundKeep.Views;
+            }
             return _keepsRepository.Edit(foundKeep);
+        }
+        public Keep IncreaseViews(Keep editedKeep)
+        {
+            Keep foundKeep = GetById(editedKeep.Id);
+            if(editedKeep.Views > foundKeep.Views)
+            {
+              foundKeep.Views = editedKeep.Views ?? foundKeep.Views;
+            }
+            return _keepsRepository.IncreaseViews(foundKeep);
         }
 
         public void Delete(string userId, int keepId)

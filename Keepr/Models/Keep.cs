@@ -11,9 +11,9 @@ namespace Keepr.Models
      public string Name { get; set; }
      public string Description { get; set; }
      public string Img { get; set; }
-     public int Views { get; set; } = 0;
-     public int Shares { get; set; } = 0;
-     public int Keeps { get; set; } = 0;
+     public int? Views { get; set; } = 0;
+     public int? Shares { get; set; } = 0;
+     public int? Keeps { get; set; } = 0;
 
      public Profile Creator {get; set;}
 

@@ -37,7 +37,7 @@
                     </div>
                     <div v-if="keep.creator">
                         <img :src="keep.creator.picture" alt="" class="rounded-circle prof-height">
-                        <small cl>{{keep.creator.name}}</small>
+                        <small class="">{{keep.creator.name}}</small>
                     </div>
                 </div>
             </div>
@@ -80,7 +80,7 @@ export default {
 <style lang="scss">
 
 .prof-height{
-    height: 3vh;
+    height: 5vh;
 }
 
 .center-space{

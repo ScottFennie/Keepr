@@ -2,7 +2,7 @@
   <div class="item border-0 c-radius" @click="this.getCurrentKeep()" data-bs-toggle="modal"
           :data-bs-target="'#keep-' + keep.id" >
           <div class="">
-    <div class="card c-radius border-0 shadow d-flex align-items-end">
+    <div class="card c-radius border-0 shadow d-flex align-items-end" @click="this.increaseViews(keep.id)">
     <img :src="keep.img" class="card-img c-radius-outer border-0 tint" alt="...">
     <div class="card-img-overlay c-radius-outer border-0 tint">
     <div class="d-flex justify-content-between align-items-end">
@@ -48,7 +48,7 @@ export default {
       vault: computed(() => AppState.currentVault),
       async getCurrentKeep(){
        try {
-         await keepsService.getCurrentKeep(props.keep.id)
+         await keepsService.addViewToKeep(props.keep.id)
          if(props.keep.vaultKeepId){
            await keepsService.getCurrentVaultKeep(props.keep.vaultKeepId)
          }
@@ -59,6 +59,13 @@ export default {
        async goToProfilePage(profileId) {
         try {
           router.push({ name: 'Profile', params: { profileId: profileId } })
+        } catch (error) {
+          Pop.toast(error)
+        }
+      },
+       async increaseViews(keepId) {
+        try {
+          await keepsService.getCurrentKeep(keepId)
         } catch (error) {
           Pop.toast(error)
         }

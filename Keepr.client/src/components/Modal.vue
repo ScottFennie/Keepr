@@ -22,8 +22,7 @@ export default {
 <style lang="scss">
 
 .modal-body {
-    margin: 0 ;
-    padding: 0;
+
 }
 .modal-content{
 
@@ -33,6 +32,8 @@ export default {
   
   backdrop-filter: blur(25px);
 }
+
+
 
 
 </style>

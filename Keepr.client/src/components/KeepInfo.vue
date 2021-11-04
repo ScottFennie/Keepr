@@ -3,11 +3,11 @@
 <div class="container-fluid p-0 m-0" v-if="keep">
     <div class="row p-0 m-0 text-white">
         <div class="col-md-6 p-0 m-0 d-flex align-items-center" v-if="keep">
-            <img :src="keep.img" alt="" class=" mx-2 my-2 img-fluid rounded">
+            <img :src="keep.img" alt="" class="img-fluid rounded">
         </div>
         <div class="col-md-6">
             <div class="row">
-                <div class="col-12 pt-2">
+                <div class="col-12">
                          <div class="d-flex justify-content-end">
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
@@ -37,8 +37,8 @@
                         <h3 class="selectable"><i class="mdi mdi-delete"></i></h3>
                     </div>
                     <div v-if="keep.creator">
-                        <img :src="keep.creator.picture" alt="" class="rounded-circle prof-height">
-                        <small cl>{{keep.creator.name}}</small>
+                        <img :src="keep.creator.picture" alt="" class="rounded-circle prof-height me-2">
+                        <!-- <p class="text-truncate">{{keep.creator.name}}</p> -->
                     </div>
                 </div>
             </div>
@@ -74,17 +74,13 @@ export default {
 <style lang="scss">
 
 .prof-height{
-    height: 3vh;
+    height: 10vh;
 }
 
 .center-space{
     height: 20vh;
 }
 
-#foo {
-    position: fixed;
-    bottom: 0;
-    right: 0;
-}
+
 
 </style>

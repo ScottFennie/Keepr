@@ -65,7 +65,26 @@ namespace Keepr.Repositories
             SET
             name = @Name,
             description = @Description,
-            img = @Img
+            img = @Img,
+            views = @Views
+            WHERE id = @Id LIMIT 1;
+            ";
+            var rowsAffected = _db.Execute(sql, newData);
+            if (rowsAffected == 0)
+            {
+                throw new Exception("Failed to update keep");
+            }
+            return newData;
+        }
+        public Keep IncreaseViews(Keep newData)
+        {
+            string sql = @"
+            UPDATE keeps
+            SET
+            name = @Name,
+            description = @Description,
+            img = @Img,
+            views = @Views
             WHERE id = @Id LIMIT 1;
             ";
             var rowsAffected = _db.Execute(sql, newData);
