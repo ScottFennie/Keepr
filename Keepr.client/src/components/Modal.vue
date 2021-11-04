@@ -23,6 +23,7 @@ export default {
 
 .modal-body {
 
+
 }
 .modal-content{
 

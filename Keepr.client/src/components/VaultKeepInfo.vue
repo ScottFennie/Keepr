@@ -6,7 +6,7 @@
         </div>
         <div class="col-md-6">
             <div class="row">
-                <div class="col-12 pt-2">
+                <div class="col-12 pt-1">
                          <div class="d-flex justify-content-end">
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
@@ -16,7 +16,7 @@
                     <h5 class="px-1"><i class="mdi mdi-content-save"></i> {{keep.keeps}}</h5>
                     <h5 class="px-1"><i class="mdi mdi-share-variant"></i> {{keep.shares}}</h5>
                 </div>
-                <div class="col-12 center-space">
+                <div class="col-12">
                     <h2 class="mt-3 d-flex justify-content-center">{{keep.name}}</h2>
                     <p class="pt-3 ps-3">{{keep.description}}</p>
                 </div>
