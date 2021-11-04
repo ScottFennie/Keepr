@@ -20,7 +20,8 @@ export default {
             async createVaultKeep(vaultId){
                 try {
                   await vaultsService.createVaultKeep(AppState.currentKeep.id, vaultId)
-                  await keepsService.addKeepSave(AppState.currentKeep.id) 
+                  await keepsService.addKeepSave(AppState.currentKeep.id)
+                  Pop.toast('Keep added to vault', 'success')
                 } catch (error) {
                   Pop.toast(error)
                 }
