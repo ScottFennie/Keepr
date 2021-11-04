@@ -34,9 +34,9 @@
                         <button class="btn btn-dark text-white">Remove From Vault</button>
                     </div>
                     <div class="text-center" v-if="keep.creatorId === account.id" @click="deleteKeep(keep.id)" data-bs-dismiss="modal" aria-label="Close">
-                        <h3 class="selectable"><i class="mdi mdi-delete"></i></h3>
+                        <h3 class="selectable"><i class="mdi mdi-delete" title="Delete Keep"></i></h3>
                     </div>
-                    <div v-if="keep.creator">
+                    <div v-if="keep.creator" :title="keep.creator.name">
                         <img :src="keep.creator.picture" alt="" class="rounded-circle prof-height me-2">
                         <!-- <p class="text-truncate">{{keep.creator.name}}</p> -->
                     </div>

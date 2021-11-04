@@ -50,7 +50,9 @@ namespace Keepr.Services
             foundKeep.Name = editedKeep.Name ?? foundKeep.Name;
             foundKeep.Description = editedKeep.Description ?? foundKeep.Description;
             foundKeep.Img = editedKeep.Img ?? foundKeep.Img;
-            foundKeep.Keeps = editedKeep.Keeps ?? foundKeep.Keeps;
+            if(editedKeep.Keeps != 0){
+              foundKeep.Keeps = editedKeep.Keeps ?? foundKeep.Keeps;
+            }
             if(editedKeep.Views > foundKeep.Views)
             {
               foundKeep.Views = editedKeep.Views ?? foundKeep.Views;

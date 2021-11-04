@@ -1,12 +1,12 @@
 <template>
 <div class="container-fluid p-0 m-0" v-if="keep">
     <div class="row p-0 m-0 text-white">
-        <div class="col-md-6 p-0 m-0" v-if="keep">
-            <img :src="keep.img" alt="" class="img-fluid rounded-start">
+        <div class="col-md-6 d-flex align-items-center" v-if="keep">
+            <img :src="keep.img" alt="" class="img-fluid rounded">
         </div>
-        <div class="col-md-6">
+        <div class="col-md-6 d-flex justify-content-between mt-1">
             <div class="row">
-                <div class="col-12 pt-1">
+                <div class="col-12 mod-close">
                          <div class="d-flex justify-content-end">
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
@@ -18,11 +18,11 @@
                 </div>
                 <div class="col-12">
                     <h2 class="mt-3 d-flex justify-content-center">{{keep.name}}</h2>
-                    <p class="pt-3 ps-3">{{keep.description}}</p>
+                    <p class="pt-3 pb-5 ps-4">{{keep.description}}</p>
                 </div>
-                <div class="col-12 d-flex justify-content-between align-items-center">
+                <div class="col-12 d-flex justify-content-between align-items-end">
                     <div class="dropdown" v-if="currentvault == null">
-                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                        <button class="btn btn-dark dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                             Add To Vault
                         </button>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
@@ -32,12 +32,12 @@
                     <div v-else>
                         <button class="btn btn-dark text-white" @click="deleteVaultKeep(keep.vaultKeepId)" data-bs-dismiss="modal" aria-label="Close">Remove From Vault</button>
                     </div>
-                    <div class="text-center" v-if="keep.creatorId === account.id" @click="deleteKeep(keep.id)" data-bs-dismiss="modal" aria-label="Close">
+                    <div class="text-center" v-if="keep.creatorId === account.id" @click="deleteKeep(keep.id)" data-bs-dismiss="modal" aria-label="Close" title="Delete Keep">
                         <h3 class="selectable"><i class="mdi mdi-delete"></i></h3>
                     </div>
                     <div v-if="keep.creator">
-                        <img :src="keep.creator.picture" alt="" class="rounded-circle prof-height">
-                        <small class="">{{keep.creator.name}}</small>
+                        <img :src="keep.creator.picture" alt="" class="rounded-circle prof-height me-2" :title="keep.creator.name">
+                        <!-- <p class="text-truncate">{{keep.creator.name}}</p> -->
                     </div>
                 </div>
             </div>
@@ -70,10 +70,13 @@ export default {
         }
       },
         async deleteVaultKeep(vaultkeepId) {
-        try {
+          try {
+          const yes = await Pop.confirm('are you sure <b>you</b> want to remove this <em>Keep?</em>?')
+          if (!yes) { return }
           await keepsService.deleteVaultKeep(vaultkeepId)
+          Pop.toast('Keep has been removed from vault.', 'success')
         } catch (error) {
-          Pop.toast(error)
+          Pop.toast(error.message, 'error')
         }
       }
     }
