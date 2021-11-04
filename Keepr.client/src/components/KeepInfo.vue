@@ -5,7 +5,7 @@
         <div class="col-md-6 d-flex align-items-center" v-if="keep">
             <img :src="keep.img" alt="" class="img-fluid rounded">
         </div>
-        <div class="col-md-6 d-flex justify-content-between">
+        <div class="col-md-6 d-flex justify-content-between mt-1">
             <div class="row">
                 <div class="col-12 mod-close">
                          <div class="d-flex justify-content-end">
@@ -51,6 +51,7 @@
 import { computed } from '@vue/reactivity'
 import { AppState } from '../AppState'
 import { keepsService } from '../services/KeepsService'
+import Pop from '../utils/Pop'
 export default {
   setup() {
     return {
@@ -60,10 +61,13 @@ export default {
         currentvault: computed(() => AppState.currentVault),
 
         async deleteKeep(keepId) {
-        try {
+          try {
+          const yes = await Pop.confirm('are you sure <b>you</b> want to remove this <em>Keep?</em>?')
+          if (!yes) { return }
           await keepsService.deleteKeep(keepId)
+          Pop.toast('Keep has been removed', 'success')
         } catch (error) {
-          Pop.toast(error)
+          Pop.toast(error.message, 'error')
         }
       }
     }

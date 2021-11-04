@@ -22,8 +22,10 @@
         <VaultKeepInfo />
       </div>
       <div v-else>
-        <KeepInfo />
+      <KeepInfo />
       </div>
+
+     
     </template>
   </Modal>
 </template>

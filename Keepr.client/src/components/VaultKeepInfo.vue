@@ -50,6 +50,7 @@
 import { computed } from '@vue/reactivity'
 import { AppState } from '../AppState'
 import { keepsService } from '../services/KeepsService'
+import Pop from '../utils/Pop'
 export default {
   setup() {
     return {
@@ -59,10 +60,13 @@ export default {
         currentvault: computed(() => AppState.currentVault),
 
         async deleteKeep(keepId) {
-        try {
+          try {
+          const yes = await Pop.confirm('are you sure <b>you</b> want to remove this <em>Keep?</em>?')
+          if (!yes) { return }
           await keepsService.deleteKeep(keepId)
+          Pop.toast('Keep has been removed', 'success')
         } catch (error) {
-          Pop.toast(error)
+          Pop.toast(error.message, 'error')
         }
       },
         async deleteVaultKeep(vaultkeepId) {

@@ -50,10 +50,13 @@ export default {
 
         async deleteVault(vaultId){
           try {
+          const yes = await Pop.confirm('are you sure <b>you</b> want to remove this <em>Vault?</em>?')
+          if (!yes) { return }
           await vaultsService.deleteVault(vaultId)
           router.push({ name: 'Home'})
+          Pop.toast('Keep has been removed', 'success')
         } catch (error) {
-          Pop.toast(error)
+          Pop.toast(error.message, 'error')
         }
         }
         }
