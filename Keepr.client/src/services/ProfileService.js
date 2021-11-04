@@ -18,6 +18,7 @@ class ProfileService{
         AppState.profileKeeps = []
         const res = await api.get(`api/profiles/${profileId}/keeps`)
         AppState.profileKeeps = res.data.map(k => new Keep(k))
+        logger.log("here is the keeps for prof", AppState.profileKeeps)
     
     }
 

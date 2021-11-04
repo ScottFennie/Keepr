@@ -54,7 +54,6 @@ import { profileService } from '../services/ProfileService'
 import { AppState } from '../AppState'
 import CreateKeep from '../components/CreateKeep.vue'
 export default {
-  components: { CreateKeep },
     setup(){
     const route = useRoute()
 
