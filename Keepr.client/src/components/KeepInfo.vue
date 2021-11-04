@@ -9,7 +9,7 @@
             <div class="row">
                 <div class="col-12 mod-close">
                          <div class="d-flex justify-content-end">
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <button type="button" class="btn-close bg-light" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
                 </div>
                 <div class="col-12 d-flex justify-content-center">

@@ -32,6 +32,7 @@ export default {
       try {
         await vaultsService.getVaultByVaultId(route.params.vaultId)
         await vaultsService.getKeepsByVaultId(route.params.vaultId)
+        await vaultsService.checkIfYourVault(route.params.vaultId)
       } catch (error) {
         Pop.toast(error, 'error')
       }

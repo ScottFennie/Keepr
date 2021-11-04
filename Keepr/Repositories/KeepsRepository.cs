@@ -45,6 +45,10 @@ namespace Keepr.Repositories
         public Keep GetById(int keepId)
         {
             string sql = @"
+            UPDATE keeps
+            SET
+            views = views + 1
+            WHERE id = @keepId;
             SELECT
             k.*,
             a.*

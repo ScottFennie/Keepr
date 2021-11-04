@@ -2,6 +2,7 @@ import { AppState } from "../AppState"
 import { Keep } from "../models/Keep"
 import { Vault } from "../models/Vault"
 import { VaultKeep } from "../models/VaultKeep"
+import { router } from "../router"
 import { logger } from "../utils/Logger"
 import { api } from "./AxiosService"
 
@@ -20,6 +21,15 @@ class VaultsService{
         const res = await api.get(`api/vaults/${vaultId}/keeps`)
         AppState.vaultKeeps = res.data.map(k => new VaultKeep(k))
         logger.log("here are all the keeps in this vault", AppState.vaultKeeps)
+        vaultsService.checkIfYourVault(vaultId)
+    
+    }
+    async checkIfYourVault(vaultId){
+        debugger
+        const foundVault = await api.get(`api/vaults/${vaultId}`)
+        if(foundVault.isPrivate == true && foundVault.creatorId !== AppState.account.id){
+        router.push({ name: 'Home'})
+        }
     
     }
 

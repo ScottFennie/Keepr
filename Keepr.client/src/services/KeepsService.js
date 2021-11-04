@@ -14,9 +14,10 @@ class KeepsService{
 
     async getCurrentKeep(keepId){
         AppState.currentKeep = null
-        const foundKeep = AppState.keeps.find(k => k.id === keepId)
-        logger.log('Here is the current keep', foundKeep)
-        AppState.currentKeep = foundKeep
+        const res = await api.get(`api/keeps/${keepId}`)
+
+        logger.log('Here is the current keep', res)
+        AppState.currentKeep = res.data
 
     }
 
@@ -31,9 +32,7 @@ class KeepsService{
         const foundKeep = AppState.keeps.find(k => k.id === keepId)
         const keepData = {}
         keepData.views = foundKeep.views += 1
-        if(AppState.account.id == null){
-        keepData.creatorId = "0"
-        }
+        logger.log(AppState.account.id)
         const res = await api.put(`api/keeps/${keepId}`, keepData)
         logger.log("here is the new keep with views", res.data)
     }

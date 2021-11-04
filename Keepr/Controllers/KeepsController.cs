@@ -68,6 +68,8 @@ namespace Keepr.Controllers
             return BadRequest(e.Message);
         }
     }
+
+    [Authorize]
     [HttpPut("{keepId}")]
 
     public async Task<ActionResult<Keep>> Edit([FromBody] Keep editedKeep, int keepId)

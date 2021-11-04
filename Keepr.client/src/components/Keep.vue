@@ -50,15 +50,10 @@ export default {
       vault: computed(() => AppState.currentVault),
       profile: computed(() => AppState.currentProfile),
       async getCurrentKeep(){
-       try {
-         await keepsService.addViewToKeep(props.keep.id)
+      await keepsService.addViewToKeep(props.keep.id)
          if(props.keep.vaultKeepId){
            await keepsService.getCurrentVaultKeep(props.keep.vaultKeepId)
-         }
-       } catch (error) {
-        Pop.toast(error)
-       }
-      },
+         }},
        async goToProfilePage(profileId) {
         try {
           router.push({ name: 'Profile', params: { profileId: profileId } })
